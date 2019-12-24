@@ -120,6 +120,14 @@ func testBentleyMcIlroy(t *testing.T, sortFn func([]int)) {
 	}
 }
 
-func TestMergeSortBentleyMcIlroy(t *testing.T) {
-	testBentleyMcIlroy(t, mergesort.MergeSort)
+func TestMergeCLRSBentleyMcIlroy(t *testing.T) {
+	testBentleyMcIlroy(t, mergesort.MergeSort1)
+}
+
+func TestMergeStdlibCLRSBentleyMcIlroy(t *testing.T) {
+	testBentleyMcIlroy(t, mergesort.MergeSort2)
+}
+
+func TestMergeTimBentleyMcIlroy(t *testing.T) {
+	testBentleyMcIlroy(t, mergesort.MergeSort3)
 }

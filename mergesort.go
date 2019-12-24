@@ -2,32 +2,32 @@ package mergesort
 
 var Sentinel int = int(^uint(0) >> 1)
 
-// CLRS implementation
-func merge(nums []int, a, m, b int) {
-	n1 := m - a + 1
-	n2 := b - m
+func merge(nums []int, p, q, r int) {
+	n1 := q - p + 1
+	n2 := r - q
 
-	l := make([]int, n1+1)
-	r := make([]int, n2+1)
+	left := make([]int, n1+1)
+	right := make([]int, n2+1)
 
 	for i := 0; i < n1; i++ {
-		l[i] = nums[a+i]
+		left[i] = nums[p+i]
 	}
 	for j := 0; j < n2; j++ {
-		r[j] = nums[m+j]
+		right[j] = nums[q+j+1]
 	}
-	l[n1] = Sentinel
-	r[n2] = Sentinel
+
+	left[n1] = Sentinel
+	right[n2] = Sentinel
 
 	i := 0
 	j := 0
 
-	for k := a; k < b; k++ {
-		if l[i] <= r[j] {
-			nums[k] = l[i]
+	for k := p; k <= r; k++ {
+		if left[i] <= right[j] {
+			nums[k] = left[i]
 			i++
 		} else {
-			nums[k] = r[j]
+			nums[k] = right[j]
 			j++
 		}
 	}
@@ -42,6 +42,7 @@ func mergeSort(nums []int, a, b int) {
 	}
 }
 
-func MergeSort(nums []int) {
-	mergeSort(nums, 0, len(nums))
+// CLRS implementation
+func MergeSort1(nums []int) {
+	mergeSort(nums, 0, len(nums)-1)
 }
