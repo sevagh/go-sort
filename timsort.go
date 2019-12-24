@@ -8,8 +8,6 @@ package mergesort
 // and the high-level description of timsort here: https://medium.com/@rylanbauermeister/understanding-timsort-191c758a42f3?
 // https://wiki.c2.com/?TimSort
 
-//import "fmt"
-
 func minRun(n int) int {
 	r := 0 // Becomes 1 if any 1 bits are shifted off
 	for n >= 64 {
@@ -129,11 +127,4 @@ func mergeOnBoundaries(nums []int, mergeBoundaries *[][2]int) {
 		(*mergeBoundaries) = (*mergeBoundaries)[:len(*mergeBoundaries)/2]
 		reduceOddMergeBoundaries(nums, mergeBoundaries)
 	}
-	//for len(*mergeBoundaries) > 1 {
-	//	currentMerge, nextMerge, *mergeBoundaries = (*mergeBoundaries)[0], (*mergeBoundaries)[1], (*mergeBoundaries)[2:]
-
-	//	symMerge(nums, currentMerge[0], nextMerge[0], nextMerge[1])
-
-	//	*mergeBoundaries = append([][2]int{[2]int{currentMerge[0], nextMerge[1]}}, *mergeBoundaries...)
-	//}
 }

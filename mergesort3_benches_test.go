@@ -7,6 +7,19 @@ import (
 	"github.com/sevagh/go-mergesort"
 )
 
+func BenchmarkMergeSort3Random8(b *testing.B) {
+	b.StopTimer()
+	nums := RandomInt(8)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		mergesort.MergeSort3(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
 func BenchmarkMergeSort3Shuffled8(b *testing.B) {
 	b.StopTimer()
 	nums := ShuffledInt(8)
@@ -101,6 +114,19 @@ func BenchmarkMergeSort3PushFront8(b *testing.B) {
 func BenchmarkMergeSort3PushMiddle8(b *testing.B) {
 	b.StopTimer()
 	nums := PushMiddleInt(8)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		mergesort.MergeSort3(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkMergeSort3Random32(b *testing.B) {
+	b.StopTimer()
+	nums := RandomInt(32)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
 		mergesort.MergeSort3(nums)
@@ -215,6 +241,19 @@ func BenchmarkMergeSort3PushMiddle32(b *testing.B) {
 	}
 }
 
+func BenchmarkMergeSort3Random128(b *testing.B) {
+	b.StopTimer()
+	nums := RandomInt(128)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		mergesort.MergeSort3(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
 func BenchmarkMergeSort3Shuffled128(b *testing.B) {
 	b.StopTimer()
 	nums := ShuffledInt(128)
@@ -309,6 +348,19 @@ func BenchmarkMergeSort3PushFront128(b *testing.B) {
 func BenchmarkMergeSort3PushMiddle128(b *testing.B) {
 	b.StopTimer()
 	nums := PushMiddleInt(128)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		mergesort.MergeSort3(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkMergeSort3Random1024(b *testing.B) {
+	b.StopTimer()
+	nums := RandomInt(1024)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
 		mergesort.MergeSort3(nums)
@@ -423,6 +475,19 @@ func BenchmarkMergeSort3PushMiddle1024(b *testing.B) {
 	}
 }
 
+func BenchmarkMergeSort3Random8092(b *testing.B) {
+	b.StopTimer()
+	nums := RandomInt(8092)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		mergesort.MergeSort3(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
 func BenchmarkMergeSort3Shuffled8092(b *testing.B) {
 	b.StopTimer()
 	nums := ShuffledInt(8092)
@@ -527,6 +592,19 @@ func BenchmarkMergeSort3PushMiddle8092(b *testing.B) {
 	}
 }
 
+func BenchmarkMergeSort3Random65536(b *testing.B) {
+	b.StopTimer()
+	nums := RandomInt(65536)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		mergesort.MergeSort3(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
 func BenchmarkMergeSort3Shuffled65536(b *testing.B) {
 	b.StopTimer()
 	nums := ShuffledInt(65536)
@@ -621,6 +699,19 @@ func BenchmarkMergeSort3PushFront65536(b *testing.B) {
 func BenchmarkMergeSort3PushMiddle65536(b *testing.B) {
 	b.StopTimer()
 	nums := PushMiddleInt(65536)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		mergesort.MergeSort3(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkMergeSort3Random1048576(b *testing.B) {
+	b.StopTimer()
+	nums := RandomInt(1048576)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
 		mergesort.MergeSort3(nums)

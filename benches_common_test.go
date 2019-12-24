@@ -2,6 +2,14 @@ package mergesort_test
 
 import "math/rand"
 
+func RandomInt(size int) []int {
+	ints := make([]int, size)
+	for i := 0; i < size; i++ {
+		ints[i] = rand.Int()
+	}
+	return ints
+}
+
 func ShuffledInt(size int) []int {
 	ints := make([]int, size)
 	for i := 0; i < size; i++ {

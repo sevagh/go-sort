@@ -131,3 +131,7 @@ func TestMergeStdlibCLRSBentleyMcIlroy(t *testing.T) {
 func TestMergeTimBentleyMcIlroy(t *testing.T) {
 	testBentleyMcIlroy(t, mergesort.MergeSort3)
 }
+
+func TestMergeGTIterativeBentleyMcIlroy(t *testing.T) {
+	testBentleyMcIlroy(t, mergesort.MergeSort4)
+}
