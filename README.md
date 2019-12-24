@@ -1,34 +1,54 @@
 # go-mergesort
 
+A collection of merge sort implementations, including a naive timsort I wrote from scratch. The goal of this project was to write a version of timsort that's still similar to a basic mergesort (no galloping, minimal magic constants, etc.) and validate the performance improvement.
+
+| Function   | Source | Notes |
+|------------|--------|-------|
+| MergeSort1 | CLRS | Basic recursive implementation |
+| MergeSort2 | [golang pkg/sort](https://golang.org/pkg/sort/#Stable) | Implements in-place symmetric merge ([[1]](https://www.semanticscholar.org/paper/Stable-Minimum-Storage-Merging-by-Symmetric-Kim-Kutzner/d664cee462cb8e6a8ae2a1a7c6bab1b5f81e0618)) and does insertion sort by blocks |
+| MergeSort3 | Various timsort sources | No galloping, and uses the same in-place symmetric merge ([1]) as above |
+| MergeSort4 | Goodrich & Tamassia | Bottom-up iterative merge sort |
+
+Parts of TimSort implemented in MergeSort3:
+
+1. Calculate minimum ascending runs of at least 32 in length (insertion sort to 32 if less)
+    1. If the descending run is bigger, reverse it in-place and use that as the minrun
+2. Record the boundaries between runs on which to merge the sorted minruns
+3. Merge on the boundaries as follows (pseudocode):
+
 ```
-sevagh:go-mergesort $ go test -benchmem -run=^a -bench='.*1048576$' -v
+boundaries = [[a, b], [b, c], [c, d], [d, e]]
+
+for len(boundaries) > 1 {
+    for i := 0; i < len(boundaries); i += 2 {
+        // first iteration: i = 0
+        // consider [a, b] and [b, c]
+        symMerge(a, b, c)
+        boundaries[0/2] = [a, c]
+
+        // second iteration: i = 1
+        // consider [c, d] and [d, e]
+        symMerge(c, d, e)
+        boundaries[1/2] = [c, e]
+    }
+    boundaries = boundaries[:len(boundaries)/2]
+    // boundaries = [[a, c], [c, e]]
+}
+```
+
+Benches for 1 million random ints:
+
+```
+sevagh:go-mergesort $ go test -benchmem -run=^a -bench='.*Random1048576$' -v
 goos: linux
 goarch: amd64
 pkg: github.com/sevagh/go-mergesort
-BenchmarkMergeSort1Shuffled1048576-8                  10         122966919 ns/op        204194137 B/op   2097153 allocs/op
-BenchmarkMergeSort1Shuffled16Values1048576-8          10         110442522 ns/op        204194128 B/op   2097153 allocs/op
-BenchmarkMergeSort1AllEqual1048576-8                   9         112532196 ns/op        204194016 B/op   2097152 allocs/op
-BenchmarkMergeSort1Ascending1048576-8                  9         112216945 ns/op        204194208 B/op   2097154 allocs/op
-BenchmarkMergeSort1Descending1048576-8                 9         137265331 ns/op        204194037 B/op   2097152 allocs/op
-BenchmarkMergeSort1PipeOrgan1048576-8                  9         128164760 ns/op        204194090 B/op   2097153 allocs/op
-BenchmarkMergeSort1PushFront1048576-8                  9         137694488 ns/op        204194101 B/op   2097153 allocs/op
-BenchmarkMergeSort1PushMiddle1048576-8                 8         147227042 ns/op        204194116 B/op   2097153 allocs/op
-BenchmarkMergeSort2Shuffled1048576-8                 285           3856389 ns/op               0 B/op          0 allocs/op
-BenchmarkMergeSort2Shuffled16Values1048576-8         393           3032438 ns/op               0 B/op          0 allocs/op
-BenchmarkMergeSort2AllEqual1048576-8                 428           2735934 ns/op               0 B/op          0 allocs/op
-BenchmarkMergeSort2Ascending1048576-8                393           2744665 ns/op               0 B/op          0 allocs/op
-BenchmarkMergeSort2Descending1048576-8               457           2835564 ns/op               0 B/op          0 allocs/op
-BenchmarkMergeSort2PipeOrgan1048576-8                465           2561045 ns/op               0 B/op          0 allocs/op
-BenchmarkMergeSort2PushFront1048576-8                433           2555345 ns/op               0 B/op          0 allocs/op
-BenchmarkMergeSort2PushMiddle1048576-8               429           2439072 ns/op               0 B/op          0 allocs/op
-BenchmarkMergeSort3Shuffled1048576-8                 570           1944582 ns/op            3132 B/op          1 allocs/op
-BenchmarkMergeSort3Shuffled16Values1048576-8         481           2262359 ns/op            3708 B/op          1 allocs/op
-BenchmarkMergeSort3AllEqual1048576-8                 694           1544059 ns/op              16 B/op          1 allocs/op
-BenchmarkMergeSort3Ascending1048576-8                777           1512064 ns/op              16 B/op          1 allocs/op
-BenchmarkMergeSort3Descending1048576-8               780           1480964 ns/op              16 B/op          1 allocs/op
-BenchmarkMergeSort3PipeOrgan1048576-8                771           1501609 ns/op              16 B/op          1 allocs/op
-BenchmarkMergeSort3PushFront1048576-8                745           1619041 ns/op              16 B/op          1 allocs/op
-BenchmarkMergeSort3PushMiddle1048576-8               771           1509540 ns/op              16 B/op          1 allocs/op
+BenchmarkMergeSort1Random1048576-8            10         112270897 ns/op        204194092 B/op   2097151 allocs/op
+BenchmarkMergeSort2Random1048576-8           264           4090389 ns/op               0 B/op          0 allocs/op
+BenchmarkMergeSort3Random1048576-8           758           1390610 ns/op            2359 B/op          1 allocs/op
+BenchmarkMergeSort4Random1048576-8            30          34546053 ns/op        16777232 B/op          2 allocs/op
 PASS
-ok      github.com/sevagh/go-mergesort  49.364s
+ok      github.com/sevagh/go-mergesort  12.053s
 ```
+
+I'm surprised by how well my naive implementation of timsort is performing - I'm sure it can be made better.
