@@ -128,10 +128,26 @@ func TestMergeStdlibCLRSBentleyMcIlroy(t *testing.T) {
 	testBentleyMcIlroy(t, gosort.MergeSort2)
 }
 
-func TestMergeTimBentleyMcIlroy(t *testing.T) {
+func TestMergeGTIterativeBentleyMcIlroy(t *testing.T) {
 	testBentleyMcIlroy(t, gosort.MergeSort3)
 }
 
-func TestMergeGTIterativeBentleyMcIlroy(t *testing.T) {
-	testBentleyMcIlroy(t, gosort.MergeSort4)
+func TestMergeTimBentleyMcIlroy(t *testing.T) {
+	testBentleyMcIlroy(t, gosort.TimSort)
+}
+
+func TestRadixSortBentleyMcIlroy(t *testing.T) {
+	testBentleyMcIlroy(t, gosort.RadixSort)
+}
+
+func TestQuickSort1BentleyMcIlroy(t *testing.T) {
+	testBentleyMcIlroy(t, gosort.QuickSort1)
+}
+
+func TestQuickSort2BentleyMcIlroy(t *testing.T) {
+	testBentleyMcIlroy(t, gosort.QuickSort2)
+}
+
+func TestQuickSort3BentleyMcIlroy(t *testing.T) {
+	testBentleyMcIlroy(t, gosort.QuickSort3)
 }

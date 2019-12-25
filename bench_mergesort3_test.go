@@ -475,9 +475,9 @@ func BenchmarkMergeSort3PushMiddle1024(b *testing.B) {
 	}
 }
 
-func BenchmarkMergeSort3Random8092(b *testing.B) {
+func BenchmarkMergeSort3Random8192(b *testing.B) {
 	b.StopTimer()
-	nums := RandomInt(8092)
+	nums := RandomInt(8192)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
 		gosort.MergeSort3(nums)
@@ -488,9 +488,9 @@ func BenchmarkMergeSort3Random8092(b *testing.B) {
 	}
 }
 
-func BenchmarkMergeSort3Shuffled8092(b *testing.B) {
+func BenchmarkMergeSort3Shuffled8192(b *testing.B) {
 	b.StopTimer()
-	nums := ShuffledInt(8092)
+	nums := ShuffledInt(8192)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
 		gosort.MergeSort3(nums)
@@ -501,9 +501,9 @@ func BenchmarkMergeSort3Shuffled8092(b *testing.B) {
 	}
 }
 
-func BenchmarkMergeSort3Shuffled16Values8092(b *testing.B) {
+func BenchmarkMergeSort3Shuffled16Values8192(b *testing.B) {
 	b.StopTimer()
-	nums := Shuffled16ValuesInt(8092)
+	nums := Shuffled16ValuesInt(8192)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
 		gosort.MergeSort3(nums)
@@ -514,9 +514,9 @@ func BenchmarkMergeSort3Shuffled16Values8092(b *testing.B) {
 	}
 }
 
-func BenchmarkMergeSort3AllEqual8092(b *testing.B) {
+func BenchmarkMergeSort3AllEqual8192(b *testing.B) {
 	b.StopTimer()
-	nums := AllEqualInt(8092)
+	nums := AllEqualInt(8192)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
 		gosort.MergeSort3(nums)
@@ -527,9 +527,9 @@ func BenchmarkMergeSort3AllEqual8092(b *testing.B) {
 	}
 }
 
-func BenchmarkMergeSort3Ascending8092(b *testing.B) {
+func BenchmarkMergeSort3Ascending8192(b *testing.B) {
 	b.StopTimer()
-	nums := AscendingInt(8092)
+	nums := AscendingInt(8192)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
 		gosort.MergeSort3(nums)
@@ -540,9 +540,9 @@ func BenchmarkMergeSort3Ascending8092(b *testing.B) {
 	}
 }
 
-func BenchmarkMergeSort3Descending8092(b *testing.B) {
+func BenchmarkMergeSort3Descending8192(b *testing.B) {
 	b.StopTimer()
-	nums := DescendingInt(8092)
+	nums := DescendingInt(8192)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
 		gosort.MergeSort3(nums)
@@ -553,9 +553,9 @@ func BenchmarkMergeSort3Descending8092(b *testing.B) {
 	}
 }
 
-func BenchmarkMergeSort3PipeOrgan8092(b *testing.B) {
+func BenchmarkMergeSort3PipeOrgan8192(b *testing.B) {
 	b.StopTimer()
-	nums := PipeOrganInt(8092)
+	nums := PipeOrganInt(8192)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
 		gosort.MergeSort3(nums)
@@ -566,9 +566,9 @@ func BenchmarkMergeSort3PipeOrgan8092(b *testing.B) {
 	}
 }
 
-func BenchmarkMergeSort3PushFront8092(b *testing.B) {
+func BenchmarkMergeSort3PushFront8192(b *testing.B) {
 	b.StopTimer()
-	nums := PushFrontInt(8092)
+	nums := PushFrontInt(8192)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
 		gosort.MergeSort3(nums)
@@ -579,9 +579,9 @@ func BenchmarkMergeSort3PushFront8092(b *testing.B) {
 	}
 }
 
-func BenchmarkMergeSort3PushMiddle8092(b *testing.B) {
+func BenchmarkMergeSort3PushMiddle8192(b *testing.B) {
 	b.StopTimer()
-	nums := PushMiddleInt(8092)
+	nums := PushMiddleInt(8192)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
 		gosort.MergeSort3(nums)

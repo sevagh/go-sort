@@ -29,7 +29,7 @@ func ExampleBigOMergeSort() {
 		currIter := 0
 		for {
 			start := time.Now()
-			gosort.MergeSort3(nums)
+			gosort.TimSort(nums)
 			timeTaken += time.Since(start).Seconds()
 			currIter++
 			if currIter > iters {

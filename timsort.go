@@ -8,6 +8,29 @@ package gosort
 // and the high-level description of timsort here: https://medium.com/@rylanbauermeister/understanding-timsort-191c758a42f3?
 // https://wiki.c2.com/?TimSort
 
+func TimSort(nums []int) {
+	n := len(nums)
+	currOffset := 0
+
+	mergeBoundaries := [][2]int{}
+
+	for currOffset < n {
+		minrun := minRun(n - currOffset)
+		currRun := countRun(nums, currOffset)
+		sliceRightLim := currOffset + currRun
+
+		if currRun < minrun {
+			// run is not big enough, insertion sort it
+			sliceRightLim = currOffset + minrun
+			insertionSort(nums, currOffset, sliceRightLim)
+		}
+
+		mergeBoundaries = append(mergeBoundaries, [2]int{currOffset, sliceRightLim})
+		currOffset = sliceRightLim
+	}
+	mergeOnBoundaries(nums, &mergeBoundaries)
+}
+
 func minRun(n int) int {
 	r := 0 // Becomes 1 if any 1 bits are shifted off
 	for n >= 64 {
@@ -66,29 +89,6 @@ func countRun(nums []int, a int) int {
 	}
 
 	return ascRun
-}
-
-func MergeSort3(nums []int) {
-	n := len(nums)
-	currOffset := 0
-
-	mergeBoundaries := [][2]int{}
-
-	for currOffset < n {
-		minrun := minRun(n - currOffset)
-		currRun := countRun(nums, currOffset)
-		sliceRightLim := currOffset + currRun
-
-		if currRun < minrun {
-			// run is not big enough, insertion sort it
-			sliceRightLim = currOffset + minrun
-			insertionSort(nums, currOffset, sliceRightLim)
-		}
-
-		mergeBoundaries = append(mergeBoundaries, [2]int{currOffset, sliceRightLim})
-		currOffset = sliceRightLim
-	}
-	mergeOnBoundaries(nums, &mergeBoundaries)
 }
 
 var currentMerge [2]int

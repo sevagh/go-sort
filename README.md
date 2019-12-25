@@ -1,17 +1,47 @@
 # go-sort
 
-A collection of Go sort experiments and implementations, including a naive timsort I wrote from scratch. The goal of this project was to write basic versions of **timsort** and **pdqsort** that are still similar to their basic mergesort and quicksort counterparts (minimal magic constants, etc.) and validate their performance improvement.
+A collection of Go sort experiments and implementations.
 
-### Merge sorts
+The goal of this project is to implement basic versions of **timsort** and **pdqsort** with minimal magic constants, etc. and validate their performance improvement over standard mergesort and quicksort.
+
+Also included are:
+
+* RadixSort (using counting sort on decimal digits)
+* heapSort (from go/pkg/sort)
+* insertionSort (from go/pkg/sort)
+
+### Quicksort
+
+| Function   | Source | Notes |
+|------------|--------|-------|
+| QuickSort1 | CLRS | Naive pivot selection (A[r]) |
+| QuickSort2 | [golang pkg/sort](https://golang.org/pkg/sort/#Sort) | Uses median-of-three partitioning, drops to insertionSort and heapSort in some cases |
+| QuickSort3 | CLRS | Randomized pivot selection |
+| PdqSort | [pdqsort](https://github.com/orlp/pdqsort) | No block quicksort - QuickSort2 with added bad partition detection and elimination |
+
+QuickSort1 vs QuickSort3 shows the importance of picking good pivots in quicksort.
+
+Parts of PdqSort implemented:
+
+1. Check partitions that are bad and do swaps to fix them
+    1. The Go QuickSort2 implementation is already always descending towards heapSort so leave that unchanged
+
+Additional reading for quicksort:
+
+1. S. Edelkamp, A. Weiß, "BlockQuicksort: Avoiding Branch Mispredictions in Quicksort", [link](https://pdfs.semanticscholar.org/b24e/f8021811cd4ef0fcc96a770657b664ee5b52.pdf)
+2. M. D. McIlroy, "A Killer Adversary for Quicksort", [link](https://www.cs.dartmouth.edu/~doug/mdmspe.pdf)
+3. The above adversary test in Go's sort pkg [tests](https://github.com/golang/go/blob/master/src/sort/sort_test.go#L455)
+
+### Mergesort
 
 | Function   | Source | Notes |
 |------------|--------|-------|
 | MergeSort1 | CLRS | Basic recursive implementation |
 | MergeSort2 | [golang pkg/sort](https://golang.org/pkg/sort/#Stable) | Implements in-place symmetric merge ([[1]](https://www.semanticscholar.org/paper/Stable-Minimum-Storage-Merging-by-Symmetric-Kim-Kutzner/d664cee462cb8e6a8ae2a1a7c6bab1b5f81e0618)) and does insertion sort by blocks |
-| MergeSort3 | Various timsort sources | No galloping, and uses the same in-place symmetric merge ([1]) as above |
-| MergeSort4 | Goodrich & Tamassia | Bottom-up iterative merge sort |
+| MergeSort3 | Goodrich & Tamassia | Bottom-up iterative merge sort |
+| TimSort | Various timsort sources | No galloping, and uses the same in-place symmetric merge as MergeSort2 |
 
-Parts of TimSort implemented in MergeSort3:
+Parts of TimSort implemented:
 
 1. Calculate minimum ascending runs of at least 32 in length (insertion sort to 32 if less)
     1. If the descending run is bigger, reverse it in-place and use that as the minrun
@@ -41,7 +71,7 @@ for len(boundaries) > 1 {
 Benches for 1 million random ints:
 
 ```
-sevagh:go-mergesort $ go test -benchmem -run=^a -bench='.*Random1048576$' -v
+sevagh:go-mergesort $ go test -benchmem -run=^a -bench='.*Merge.*Random1048576$' -v
 goos: linux
 goarch: amd64
 pkg: github.com/sevagh/go-mergesort
@@ -54,3 +84,8 @@ ok      github.com/sevagh/go-mergesort  12.053s
 ```
 
 I'm surprised by how well my naive implementation of timsort is performing - I'm sure it can be made better.
+
+Additional reading for timsort:
+
+1. Python [implementation](https://github.com/python/cpython/blob/master/Objects/listobject.c) and [description](https://github.com/python/cpython/blob/master/Objects/listsort.txt)
+2. High level descriptions of timsort I used to write my implementation: [here](https://medium.com/@rylanbauermeister/understanding-timsort-191c758a42f3?) and [here](https://wiki.c2.com/?TimSort)

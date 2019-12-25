@@ -7,12 +7,12 @@ import (
 	"github.com/sevagh/go-sort"
 )
 
-func BenchmarkMergeSort2Random8(b *testing.B) {
+func BenchmarkMergeSort1Random8(b *testing.B) {
 	b.StopTimer()
 	nums := RandomInt(8)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.MergeSort2(nums)
+		gosort.MergeSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -20,12 +20,12 @@ func BenchmarkMergeSort2Random8(b *testing.B) {
 	}
 }
 
-func BenchmarkMergeSort2Shuffled8(b *testing.B) {
+func BenchmarkMergeSort1Shuffled8(b *testing.B) {
 	b.StopTimer()
 	nums := ShuffledInt(8)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.MergeSort2(nums)
+		gosort.MergeSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -33,12 +33,12 @@ func BenchmarkMergeSort2Shuffled8(b *testing.B) {
 	}
 }
 
-func BenchmarkMergeSort2Shuffled16Values8(b *testing.B) {
+func BenchmarkMergeSort1Shuffled16Values8(b *testing.B) {
 	b.StopTimer()
 	nums := Shuffled16ValuesInt(8)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.MergeSort2(nums)
+		gosort.MergeSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -46,12 +46,12 @@ func BenchmarkMergeSort2Shuffled16Values8(b *testing.B) {
 	}
 }
 
-func BenchmarkMergeSort2AllEqual8(b *testing.B) {
+func BenchmarkMergeSort1AllEqual8(b *testing.B) {
 	b.StopTimer()
 	nums := AllEqualInt(8)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.MergeSort2(nums)
+		gosort.MergeSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -59,12 +59,12 @@ func BenchmarkMergeSort2AllEqual8(b *testing.B) {
 	}
 }
 
-func BenchmarkMergeSort2Ascending8(b *testing.B) {
+func BenchmarkMergeSort1Ascending8(b *testing.B) {
 	b.StopTimer()
 	nums := AscendingInt(8)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.MergeSort2(nums)
+		gosort.MergeSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -72,12 +72,12 @@ func BenchmarkMergeSort2Ascending8(b *testing.B) {
 	}
 }
 
-func BenchmarkMergeSort2Descending8(b *testing.B) {
+func BenchmarkMergeSort1Descending8(b *testing.B) {
 	b.StopTimer()
 	nums := DescendingInt(8)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.MergeSort2(nums)
+		gosort.MergeSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -85,12 +85,12 @@ func BenchmarkMergeSort2Descending8(b *testing.B) {
 	}
 }
 
-func BenchmarkMergeSort2PipeOrgan8(b *testing.B) {
+func BenchmarkMergeSort1PipeOrgan8(b *testing.B) {
 	b.StopTimer()
 	nums := PipeOrganInt(8)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.MergeSort2(nums)
+		gosort.MergeSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -98,12 +98,12 @@ func BenchmarkMergeSort2PipeOrgan8(b *testing.B) {
 	}
 }
 
-func BenchmarkMergeSort2PushFront8(b *testing.B) {
+func BenchmarkMergeSort1PushFront8(b *testing.B) {
 	b.StopTimer()
 	nums := PushFrontInt(8)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.MergeSort2(nums)
+		gosort.MergeSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -111,12 +111,12 @@ func BenchmarkMergeSort2PushFront8(b *testing.B) {
 	}
 }
 
-func BenchmarkMergeSort2PushMiddle8(b *testing.B) {
+func BenchmarkMergeSort1PushMiddle8(b *testing.B) {
 	b.StopTimer()
 	nums := PushMiddleInt(8)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.MergeSort2(nums)
+		gosort.MergeSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -124,12 +124,12 @@ func BenchmarkMergeSort2PushMiddle8(b *testing.B) {
 	}
 }
 
-func BenchmarkMergeSort2Random32(b *testing.B) {
+func BenchmarkMergeSort1Random32(b *testing.B) {
 	b.StopTimer()
 	nums := RandomInt(32)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.MergeSort2(nums)
+		gosort.MergeSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -137,12 +137,12 @@ func BenchmarkMergeSort2Random32(b *testing.B) {
 	}
 }
 
-func BenchmarkMergeSort2Shuffled32(b *testing.B) {
+func BenchmarkMergeSort1Shuffled32(b *testing.B) {
 	b.StopTimer()
 	nums := ShuffledInt(32)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.MergeSort2(nums)
+		gosort.MergeSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -150,12 +150,12 @@ func BenchmarkMergeSort2Shuffled32(b *testing.B) {
 	}
 }
 
-func BenchmarkMergeSort2Shuffled16Values32(b *testing.B) {
+func BenchmarkMergeSort1Shuffled16Values32(b *testing.B) {
 	b.StopTimer()
 	nums := Shuffled16ValuesInt(32)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.MergeSort2(nums)
+		gosort.MergeSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -163,12 +163,12 @@ func BenchmarkMergeSort2Shuffled16Values32(b *testing.B) {
 	}
 }
 
-func BenchmarkMergeSort2AllEqual32(b *testing.B) {
+func BenchmarkMergeSort1AllEqual32(b *testing.B) {
 	b.StopTimer()
 	nums := AllEqualInt(32)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.MergeSort2(nums)
+		gosort.MergeSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -176,12 +176,12 @@ func BenchmarkMergeSort2AllEqual32(b *testing.B) {
 	}
 }
 
-func BenchmarkMergeSort2Ascending32(b *testing.B) {
+func BenchmarkMergeSort1Ascending32(b *testing.B) {
 	b.StopTimer()
 	nums := AscendingInt(32)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.MergeSort2(nums)
+		gosort.MergeSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -189,12 +189,12 @@ func BenchmarkMergeSort2Ascending32(b *testing.B) {
 	}
 }
 
-func BenchmarkMergeSort2Descending32(b *testing.B) {
+func BenchmarkMergeSort1Descending32(b *testing.B) {
 	b.StopTimer()
 	nums := DescendingInt(32)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.MergeSort2(nums)
+		gosort.MergeSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -202,12 +202,12 @@ func BenchmarkMergeSort2Descending32(b *testing.B) {
 	}
 }
 
-func BenchmarkMergeSort2PipeOrgan32(b *testing.B) {
+func BenchmarkMergeSort1PipeOrgan32(b *testing.B) {
 	b.StopTimer()
 	nums := PipeOrganInt(32)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.MergeSort2(nums)
+		gosort.MergeSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -215,12 +215,12 @@ func BenchmarkMergeSort2PipeOrgan32(b *testing.B) {
 	}
 }
 
-func BenchmarkMergeSort2PushFront32(b *testing.B) {
+func BenchmarkMergeSort1PushFront32(b *testing.B) {
 	b.StopTimer()
 	nums := PushFrontInt(32)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.MergeSort2(nums)
+		gosort.MergeSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -228,12 +228,12 @@ func BenchmarkMergeSort2PushFront32(b *testing.B) {
 	}
 }
 
-func BenchmarkMergeSort2PushMiddle32(b *testing.B) {
+func BenchmarkMergeSort1PushMiddle32(b *testing.B) {
 	b.StopTimer()
 	nums := PushMiddleInt(32)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.MergeSort2(nums)
+		gosort.MergeSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -241,12 +241,12 @@ func BenchmarkMergeSort2PushMiddle32(b *testing.B) {
 	}
 }
 
-func BenchmarkMergeSort2Random128(b *testing.B) {
+func BenchmarkMergeSort1Random128(b *testing.B) {
 	b.StopTimer()
 	nums := RandomInt(128)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.MergeSort2(nums)
+		gosort.MergeSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -254,12 +254,12 @@ func BenchmarkMergeSort2Random128(b *testing.B) {
 	}
 }
 
-func BenchmarkMergeSort2Shuffled128(b *testing.B) {
+func BenchmarkMergeSort1Shuffled128(b *testing.B) {
 	b.StopTimer()
 	nums := ShuffledInt(128)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.MergeSort2(nums)
+		gosort.MergeSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -267,12 +267,12 @@ func BenchmarkMergeSort2Shuffled128(b *testing.B) {
 	}
 }
 
-func BenchmarkMergeSort2Shuffled16Values128(b *testing.B) {
+func BenchmarkMergeSort1Shuffled16Values128(b *testing.B) {
 	b.StopTimer()
 	nums := Shuffled16ValuesInt(128)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.MergeSort2(nums)
+		gosort.MergeSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -280,12 +280,12 @@ func BenchmarkMergeSort2Shuffled16Values128(b *testing.B) {
 	}
 }
 
-func BenchmarkMergeSort2AllEqual128(b *testing.B) {
+func BenchmarkMergeSort1AllEqual128(b *testing.B) {
 	b.StopTimer()
 	nums := AllEqualInt(128)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.MergeSort2(nums)
+		gosort.MergeSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -293,12 +293,12 @@ func BenchmarkMergeSort2AllEqual128(b *testing.B) {
 	}
 }
 
-func BenchmarkMergeSort2Ascending128(b *testing.B) {
+func BenchmarkMergeSort1Ascending128(b *testing.B) {
 	b.StopTimer()
 	nums := AscendingInt(128)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.MergeSort2(nums)
+		gosort.MergeSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -306,12 +306,12 @@ func BenchmarkMergeSort2Ascending128(b *testing.B) {
 	}
 }
 
-func BenchmarkMergeSort2Descending128(b *testing.B) {
+func BenchmarkMergeSort1Descending128(b *testing.B) {
 	b.StopTimer()
 	nums := DescendingInt(128)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.MergeSort2(nums)
+		gosort.MergeSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -319,12 +319,12 @@ func BenchmarkMergeSort2Descending128(b *testing.B) {
 	}
 }
 
-func BenchmarkMergeSort2PipeOrgan128(b *testing.B) {
+func BenchmarkMergeSort1PipeOrgan128(b *testing.B) {
 	b.StopTimer()
 	nums := PipeOrganInt(128)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.MergeSort2(nums)
+		gosort.MergeSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -332,12 +332,12 @@ func BenchmarkMergeSort2PipeOrgan128(b *testing.B) {
 	}
 }
 
-func BenchmarkMergeSort2PushFront128(b *testing.B) {
+func BenchmarkMergeSort1PushFront128(b *testing.B) {
 	b.StopTimer()
 	nums := PushFrontInt(128)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.MergeSort2(nums)
+		gosort.MergeSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -345,12 +345,12 @@ func BenchmarkMergeSort2PushFront128(b *testing.B) {
 	}
 }
 
-func BenchmarkMergeSort2PushMiddle128(b *testing.B) {
+func BenchmarkMergeSort1PushMiddle128(b *testing.B) {
 	b.StopTimer()
 	nums := PushMiddleInt(128)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.MergeSort2(nums)
+		gosort.MergeSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -358,12 +358,12 @@ func BenchmarkMergeSort2PushMiddle128(b *testing.B) {
 	}
 }
 
-func BenchmarkMergeSort2Random1024(b *testing.B) {
+func BenchmarkMergeSort1Random1024(b *testing.B) {
 	b.StopTimer()
 	nums := RandomInt(1024)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.MergeSort2(nums)
+		gosort.MergeSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -371,12 +371,12 @@ func BenchmarkMergeSort2Random1024(b *testing.B) {
 	}
 }
 
-func BenchmarkMergeSort2Shuffled1024(b *testing.B) {
+func BenchmarkMergeSort1Shuffled1024(b *testing.B) {
 	b.StopTimer()
 	nums := ShuffledInt(1024)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.MergeSort2(nums)
+		gosort.MergeSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -384,12 +384,12 @@ func BenchmarkMergeSort2Shuffled1024(b *testing.B) {
 	}
 }
 
-func BenchmarkMergeSort2Shuffled16Values1024(b *testing.B) {
+func BenchmarkMergeSort1Shuffled16Values1024(b *testing.B) {
 	b.StopTimer()
 	nums := Shuffled16ValuesInt(1024)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.MergeSort2(nums)
+		gosort.MergeSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -397,12 +397,12 @@ func BenchmarkMergeSort2Shuffled16Values1024(b *testing.B) {
 	}
 }
 
-func BenchmarkMergeSort2AllEqual1024(b *testing.B) {
+func BenchmarkMergeSort1AllEqual1024(b *testing.B) {
 	b.StopTimer()
 	nums := AllEqualInt(1024)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.MergeSort2(nums)
+		gosort.MergeSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -410,12 +410,12 @@ func BenchmarkMergeSort2AllEqual1024(b *testing.B) {
 	}
 }
 
-func BenchmarkMergeSort2Ascending1024(b *testing.B) {
+func BenchmarkMergeSort1Ascending1024(b *testing.B) {
 	b.StopTimer()
 	nums := AscendingInt(1024)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.MergeSort2(nums)
+		gosort.MergeSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -423,12 +423,12 @@ func BenchmarkMergeSort2Ascending1024(b *testing.B) {
 	}
 }
 
-func BenchmarkMergeSort2Descending1024(b *testing.B) {
+func BenchmarkMergeSort1Descending1024(b *testing.B) {
 	b.StopTimer()
 	nums := DescendingInt(1024)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.MergeSort2(nums)
+		gosort.MergeSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -436,12 +436,12 @@ func BenchmarkMergeSort2Descending1024(b *testing.B) {
 	}
 }
 
-func BenchmarkMergeSort2PipeOrgan1024(b *testing.B) {
+func BenchmarkMergeSort1PipeOrgan1024(b *testing.B) {
 	b.StopTimer()
 	nums := PipeOrganInt(1024)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.MergeSort2(nums)
+		gosort.MergeSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -449,12 +449,12 @@ func BenchmarkMergeSort2PipeOrgan1024(b *testing.B) {
 	}
 }
 
-func BenchmarkMergeSort2PushFront1024(b *testing.B) {
+func BenchmarkMergeSort1PushFront1024(b *testing.B) {
 	b.StopTimer()
 	nums := PushFrontInt(1024)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.MergeSort2(nums)
+		gosort.MergeSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -462,12 +462,12 @@ func BenchmarkMergeSort2PushFront1024(b *testing.B) {
 	}
 }
 
-func BenchmarkMergeSort2PushMiddle1024(b *testing.B) {
+func BenchmarkMergeSort1PushMiddle1024(b *testing.B) {
 	b.StopTimer()
 	nums := PushMiddleInt(1024)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.MergeSort2(nums)
+		gosort.MergeSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -475,12 +475,12 @@ func BenchmarkMergeSort2PushMiddle1024(b *testing.B) {
 	}
 }
 
-func BenchmarkMergeSort2Random8092(b *testing.B) {
+func BenchmarkMergeSort1Random8192(b *testing.B) {
 	b.StopTimer()
-	nums := RandomInt(8092)
+	nums := RandomInt(8192)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.MergeSort2(nums)
+		gosort.MergeSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -488,12 +488,12 @@ func BenchmarkMergeSort2Random8092(b *testing.B) {
 	}
 }
 
-func BenchmarkMergeSort2Shuffled8092(b *testing.B) {
+func BenchmarkMergeSort1Shuffled8192(b *testing.B) {
 	b.StopTimer()
-	nums := ShuffledInt(8092)
+	nums := ShuffledInt(8192)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.MergeSort2(nums)
+		gosort.MergeSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -501,12 +501,12 @@ func BenchmarkMergeSort2Shuffled8092(b *testing.B) {
 	}
 }
 
-func BenchmarkMergeSort2Shuffled16Values8092(b *testing.B) {
+func BenchmarkMergeSort1Shuffled16Values8192(b *testing.B) {
 	b.StopTimer()
-	nums := Shuffled16ValuesInt(8092)
+	nums := Shuffled16ValuesInt(8192)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.MergeSort2(nums)
+		gosort.MergeSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -514,12 +514,12 @@ func BenchmarkMergeSort2Shuffled16Values8092(b *testing.B) {
 	}
 }
 
-func BenchmarkMergeSort2AllEqual8092(b *testing.B) {
+func BenchmarkMergeSort1AllEqual8192(b *testing.B) {
 	b.StopTimer()
-	nums := AllEqualInt(8092)
+	nums := AllEqualInt(8192)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.MergeSort2(nums)
+		gosort.MergeSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -527,12 +527,12 @@ func BenchmarkMergeSort2AllEqual8092(b *testing.B) {
 	}
 }
 
-func BenchmarkMergeSort2Ascending8092(b *testing.B) {
+func BenchmarkMergeSort1Ascending8192(b *testing.B) {
 	b.StopTimer()
-	nums := AscendingInt(8092)
+	nums := AscendingInt(8192)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.MergeSort2(nums)
+		gosort.MergeSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -540,12 +540,12 @@ func BenchmarkMergeSort2Ascending8092(b *testing.B) {
 	}
 }
 
-func BenchmarkMergeSort2Descending8092(b *testing.B) {
+func BenchmarkMergeSort1Descending8192(b *testing.B) {
 	b.StopTimer()
-	nums := DescendingInt(8092)
+	nums := DescendingInt(8192)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.MergeSort2(nums)
+		gosort.MergeSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -553,12 +553,12 @@ func BenchmarkMergeSort2Descending8092(b *testing.B) {
 	}
 }
 
-func BenchmarkMergeSort2PipeOrgan8092(b *testing.B) {
+func BenchmarkMergeSort1PipeOrgan8192(b *testing.B) {
 	b.StopTimer()
-	nums := PipeOrganInt(8092)
+	nums := PipeOrganInt(8192)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.MergeSort2(nums)
+		gosort.MergeSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -566,12 +566,12 @@ func BenchmarkMergeSort2PipeOrgan8092(b *testing.B) {
 	}
 }
 
-func BenchmarkMergeSort2PushFront8092(b *testing.B) {
+func BenchmarkMergeSort1PushFront8192(b *testing.B) {
 	b.StopTimer()
-	nums := PushFrontInt(8092)
+	nums := PushFrontInt(8192)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.MergeSort2(nums)
+		gosort.MergeSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -579,12 +579,12 @@ func BenchmarkMergeSort2PushFront8092(b *testing.B) {
 	}
 }
 
-func BenchmarkMergeSort2PushMiddle8092(b *testing.B) {
+func BenchmarkMergeSort1PushMiddle8192(b *testing.B) {
 	b.StopTimer()
-	nums := PushMiddleInt(8092)
+	nums := PushMiddleInt(8192)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.MergeSort2(nums)
+		gosort.MergeSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -592,12 +592,12 @@ func BenchmarkMergeSort2PushMiddle8092(b *testing.B) {
 	}
 }
 
-func BenchmarkMergeSort2Random65536(b *testing.B) {
+func BenchmarkMergeSort1Random65536(b *testing.B) {
 	b.StopTimer()
 	nums := RandomInt(65536)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.MergeSort2(nums)
+		gosort.MergeSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -605,12 +605,12 @@ func BenchmarkMergeSort2Random65536(b *testing.B) {
 	}
 }
 
-func BenchmarkMergeSort2Shuffled65536(b *testing.B) {
+func BenchmarkMergeSort1Shuffled65536(b *testing.B) {
 	b.StopTimer()
 	nums := ShuffledInt(65536)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.MergeSort2(nums)
+		gosort.MergeSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -618,12 +618,12 @@ func BenchmarkMergeSort2Shuffled65536(b *testing.B) {
 	}
 }
 
-func BenchmarkMergeSort2Shuffled16Values65536(b *testing.B) {
+func BenchmarkMergeSort1Shuffled16Values65536(b *testing.B) {
 	b.StopTimer()
 	nums := Shuffled16ValuesInt(65536)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.MergeSort2(nums)
+		gosort.MergeSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -631,12 +631,12 @@ func BenchmarkMergeSort2Shuffled16Values65536(b *testing.B) {
 	}
 }
 
-func BenchmarkMergeSort2AllEqual65536(b *testing.B) {
+func BenchmarkMergeSort1AllEqual65536(b *testing.B) {
 	b.StopTimer()
 	nums := AllEqualInt(65536)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.MergeSort2(nums)
+		gosort.MergeSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -644,12 +644,12 @@ func BenchmarkMergeSort2AllEqual65536(b *testing.B) {
 	}
 }
 
-func BenchmarkMergeSort2Ascending65536(b *testing.B) {
+func BenchmarkMergeSort1Ascending65536(b *testing.B) {
 	b.StopTimer()
 	nums := AscendingInt(65536)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.MergeSort2(nums)
+		gosort.MergeSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -657,12 +657,12 @@ func BenchmarkMergeSort2Ascending65536(b *testing.B) {
 	}
 }
 
-func BenchmarkMergeSort2Descending65536(b *testing.B) {
+func BenchmarkMergeSort1Descending65536(b *testing.B) {
 	b.StopTimer()
 	nums := DescendingInt(65536)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.MergeSort2(nums)
+		gosort.MergeSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -670,12 +670,12 @@ func BenchmarkMergeSort2Descending65536(b *testing.B) {
 	}
 }
 
-func BenchmarkMergeSort2PipeOrgan65536(b *testing.B) {
+func BenchmarkMergeSort1PipeOrgan65536(b *testing.B) {
 	b.StopTimer()
 	nums := PipeOrganInt(65536)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.MergeSort2(nums)
+		gosort.MergeSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -683,12 +683,12 @@ func BenchmarkMergeSort2PipeOrgan65536(b *testing.B) {
 	}
 }
 
-func BenchmarkMergeSort2PushFront65536(b *testing.B) {
+func BenchmarkMergeSort1PushFront65536(b *testing.B) {
 	b.StopTimer()
 	nums := PushFrontInt(65536)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.MergeSort2(nums)
+		gosort.MergeSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -696,12 +696,12 @@ func BenchmarkMergeSort2PushFront65536(b *testing.B) {
 	}
 }
 
-func BenchmarkMergeSort2PushMiddle65536(b *testing.B) {
+func BenchmarkMergeSort1PushMiddle65536(b *testing.B) {
 	b.StopTimer()
 	nums := PushMiddleInt(65536)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.MergeSort2(nums)
+		gosort.MergeSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -709,12 +709,12 @@ func BenchmarkMergeSort2PushMiddle65536(b *testing.B) {
 	}
 }
 
-func BenchmarkMergeSort2Random1048576(b *testing.B) {
+func BenchmarkMergeSort1Random1048576(b *testing.B) {
 	b.StopTimer()
 	nums := RandomInt(1048576)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.MergeSort2(nums)
+		gosort.MergeSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -722,12 +722,12 @@ func BenchmarkMergeSort2Random1048576(b *testing.B) {
 	}
 }
 
-func BenchmarkMergeSort2Shuffled1048576(b *testing.B) {
+func BenchmarkMergeSort1Shuffled1048576(b *testing.B) {
 	b.StopTimer()
 	nums := ShuffledInt(1048576)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.MergeSort2(nums)
+		gosort.MergeSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -735,12 +735,12 @@ func BenchmarkMergeSort2Shuffled1048576(b *testing.B) {
 	}
 }
 
-func BenchmarkMergeSort2Shuffled16Values1048576(b *testing.B) {
+func BenchmarkMergeSort1Shuffled16Values1048576(b *testing.B) {
 	b.StopTimer()
 	nums := Shuffled16ValuesInt(1048576)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.MergeSort2(nums)
+		gosort.MergeSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -748,12 +748,12 @@ func BenchmarkMergeSort2Shuffled16Values1048576(b *testing.B) {
 	}
 }
 
-func BenchmarkMergeSort2AllEqual1048576(b *testing.B) {
+func BenchmarkMergeSort1AllEqual1048576(b *testing.B) {
 	b.StopTimer()
 	nums := AllEqualInt(1048576)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.MergeSort2(nums)
+		gosort.MergeSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -761,12 +761,12 @@ func BenchmarkMergeSort2AllEqual1048576(b *testing.B) {
 	}
 }
 
-func BenchmarkMergeSort2Ascending1048576(b *testing.B) {
+func BenchmarkMergeSort1Ascending1048576(b *testing.B) {
 	b.StopTimer()
 	nums := AscendingInt(1048576)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.MergeSort2(nums)
+		gosort.MergeSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -774,12 +774,12 @@ func BenchmarkMergeSort2Ascending1048576(b *testing.B) {
 	}
 }
 
-func BenchmarkMergeSort2Descending1048576(b *testing.B) {
+func BenchmarkMergeSort1Descending1048576(b *testing.B) {
 	b.StopTimer()
 	nums := DescendingInt(1048576)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.MergeSort2(nums)
+		gosort.MergeSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -787,12 +787,12 @@ func BenchmarkMergeSort2Descending1048576(b *testing.B) {
 	}
 }
 
-func BenchmarkMergeSort2PipeOrgan1048576(b *testing.B) {
+func BenchmarkMergeSort1PipeOrgan1048576(b *testing.B) {
 	b.StopTimer()
 	nums := PipeOrganInt(1048576)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.MergeSort2(nums)
+		gosort.MergeSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -800,12 +800,12 @@ func BenchmarkMergeSort2PipeOrgan1048576(b *testing.B) {
 	}
 }
 
-func BenchmarkMergeSort2PushFront1048576(b *testing.B) {
+func BenchmarkMergeSort1PushFront1048576(b *testing.B) {
 	b.StopTimer()
 	nums := PushFrontInt(1048576)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.MergeSort2(nums)
+		gosort.MergeSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -813,12 +813,12 @@ func BenchmarkMergeSort2PushFront1048576(b *testing.B) {
 	}
 }
 
-func BenchmarkMergeSort2PushMiddle1048576(b *testing.B) {
+func BenchmarkMergeSort1PushMiddle1048576(b *testing.B) {
 	b.StopTimer()
 	nums := PushMiddleInt(1048576)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.MergeSort2(nums)
+		gosort.MergeSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
