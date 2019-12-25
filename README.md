@@ -1,6 +1,8 @@
-# go-mergesort
+# go-sort
 
-A collection of merge sort implementations, including a naive timsort I wrote from scratch. The goal of this project was to write a version of timsort that's still similar to a basic mergesort (no galloping, minimal magic constants, etc.) and validate the performance improvement.
+A collection of Go sort experiments and implementations, including a naive timsort I wrote from scratch. The goal of this project was to write basic versions of **timsort** and **pdqsort** that are still similar to their basic mergesort and quicksort counterparts (minimal magic constants, etc.) and validate their performance improvement.
+
+### Merge sorts
 
 | Function   | Source | Notes |
 |------------|--------|-------|

@@ -4,7 +4,7 @@ import (
 	"sort"
 	"testing"
 
-	"github.com/sevagh/go-mergesort"
+	"github.com/sevagh/go-sort"
 )
 
 func BenchmarkMergeSort3Random8(b *testing.B) {

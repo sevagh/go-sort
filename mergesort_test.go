@@ -6,7 +6,7 @@ import (
 	"sort"
 	"testing"
 
-	"github.com/sevagh/go-mergesort"
+	"github.com/sevagh/go-sort"
 )
 
 // copied from https://github.com/golang/go/blob/master/src/sort/sort_test.go

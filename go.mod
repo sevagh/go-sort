@@ -1,3 +1,3 @@
-module github.com/sevagh/go-mergesort
+module github.com/sevagh/go-sort
 
 go 1.13
