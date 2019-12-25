@@ -1,4 +1,4 @@
-package mergesort
+package gosort
 
 var Sentinel int = int(^uint(0) >> 1)
 

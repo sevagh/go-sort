@@ -1,4 +1,4 @@
-package mergesort
+package gosort
 
 // a simplistic timsort
 //

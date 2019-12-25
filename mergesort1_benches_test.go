@@ -1,4 +1,4 @@
-package mergesort_test
+package gosort_test
 
 import (
 	"sort"

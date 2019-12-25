@@ -1,4 +1,4 @@
-package mergesort
+package gosort
 
 // copied from https://raw.githubusercontent.com/golang/go/master/src/sort/sort.go
 
