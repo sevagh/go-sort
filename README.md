@@ -2,9 +2,7 @@
 
 A collection of Go sort experiments and implementations.
 
-The goal of this project is to implement minimal versions of **timsort** and **pdqsort** and validate their performance improvement over standard mergesort and quicksort.
-
-Also included are:
+The goal of this project was to implement minimal versions of **timsort** and **pdqsort** and validate their performance improvement over standard mergesort and quicksort. Also included are:
 
 * RadixSort (using counting sort on decimal digits)
 * heapSort (from go/pkg/sort)
@@ -19,17 +17,17 @@ Also included are:
 | QuickSort3 | CLRS | Randomized pivot selection |
 | PdqSort1 | [pdqsort](https://github.com/orlp/pdqsort) | QuickSort1 with added bad partition detection and elimination |
 | PdqSort2 | [pdqsort](https://github.com/orlp/pdqsort) | QuickSort2 with added bad partition detection and elimination |
+| PdqSort3 | [pdqsort](https://github.com/orlp/pdqsort) | QuickSort3 with added bad partition detection and elimination |
 
 QuickSort1 vs QuickSort3 shows the importance of picking good pivots in quicksort.
 
 Parts of PdqSort implemented:
 
 1. Check partitions that are bad and do swaps to fix them (swaps taken from the [Rust pdqsort implementation](https://docs.rs/pdqsort/0.1.0/src/pdqsort/lib.rs.html#427))
-    1. The Go QuickSort2 implementation is already always descending towards heapSort with maxDepth so leave that unchanged
 
 Results for PdqSort2 were expectedly disappointing. Some gains, some losses, given my amateurish modifications on top of Go's standard, optimized quicksort. Same goes for PdqSort3 vs. QuickSort3, where the random pivot selection seems to be good enough to not benefit from the addition of partition busting.
 
-However, PdqSort1 vs QuickSort1 on an array of random integers is significant (as per my benchmarks, which may be flawed), which may be a demonstration of the isolated benefits of purely bad partition busting bolted onto a basic quicksort:
+However, PdqSort1 vs QuickSort1 on an array of random integers is significant (as per my benchmarks, which may be flawed), which may be a demonstration of the isolated benefits of purely bad partition busting bolted onto a basic quicksort. This might be a tautological conclusion since QuickSort1 picks almost the worst partition:
 
 ```
 sevagh:go-sort $ go test -benchmem -run=^a -bench='.*(QuickSort1|PdqSort1).*Random(8192|65536)$' -v
