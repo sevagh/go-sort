@@ -111,7 +111,7 @@ func testBentleyMcIlroy(t *testing.T, sortFn func([]int)) {
 					//t.Logf("testing %s", desc)
 					d := mdata[0:n]
 					sortFn(d)
-					if !sort.IntsAreSorted(mdata) {
+					if !sort.IntsAreSorted(d) {
 						t.Fatalf("%s: ints not sorted\n\t%v", desc, mdata)
 					}
 				}
@@ -150,4 +150,16 @@ func TestQuickSort2BentleyMcIlroy(t *testing.T) {
 
 func TestQuickSort3BentleyMcIlroy(t *testing.T) {
 	testBentleyMcIlroy(t, gosort.QuickSort3)
+}
+
+func TestPdqSort2BentleyMcIlroy(t *testing.T) {
+	testBentleyMcIlroy(t, gosort.PdqSort2)
+}
+
+func TestPdqSort1BentleyMcIlroy(t *testing.T) {
+	testBentleyMcIlroy(t, gosort.PdqSort1)
+}
+
+func TestPdqSort3BentleyMcIlroy(t *testing.T) {
+	testBentleyMcIlroy(t, gosort.PdqSort3)
 }

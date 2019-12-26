@@ -2,7 +2,7 @@
 
 A collection of Go sort experiments and implementations.
 
-The goal of this project is to implement basic versions of **timsort** and **pdqsort** with minimal magic constants, etc. and validate their performance improvement over standard mergesort and quicksort.
+The goal of this project is to implement minimal versions of **timsort** and **pdqsort** and validate their performance improvement over standard mergesort and quicksort.
 
 Also included are:
 
@@ -15,16 +15,34 @@ Also included are:
 | Function   | Source | Notes |
 |------------|--------|-------|
 | QuickSort1 | CLRS | Naive pivot selection (A[r]) |
-| QuickSort2 | [golang pkg/sort](https://golang.org/pkg/sort/#Sort) | Uses median-of-three partitioning, drops to insertionSort and heapSort in some cases |
+| QuickSort2 | [golang pkg/sort](https://golang.org/pkg/sort/#Sort) | Uses median-of-three partitioning, drops to insertionSort and heapSort in some cases. It looks like [introsort](https://en.wikipedia.org/wiki/Introsort). Partitioning looks like Hoare's partitioning scheme |
 | QuickSort3 | CLRS | Randomized pivot selection |
-| PdqSort | [pdqsort](https://github.com/orlp/pdqsort) | No block quicksort - QuickSort2 with added bad partition detection and elimination |
+| PdqSort1 | [pdqsort](https://github.com/orlp/pdqsort) | QuickSort1 with added bad partition detection and elimination |
+| PdqSort2 | [pdqsort](https://github.com/orlp/pdqsort) | QuickSort2 with added bad partition detection and elimination |
 
 QuickSort1 vs QuickSort3 shows the importance of picking good pivots in quicksort.
 
 Parts of PdqSort implemented:
 
-1. Check partitions that are bad and do swaps to fix them
-    1. The Go QuickSort2 implementation is already always descending towards heapSort so leave that unchanged
+1. Check partitions that are bad and do swaps to fix them (swaps taken from the [Rust pdqsort implementation](https://docs.rs/pdqsort/0.1.0/src/pdqsort/lib.rs.html#427))
+    1. The Go QuickSort2 implementation is already always descending towards heapSort with maxDepth so leave that unchanged
+
+Results for PdqSort2 were expectedly disappointing. Some gains, some losses, given my amateurish modifications on top of Go's standard, optimized quicksort. Same goes for PdqSort3 vs. QuickSort3, where the random pivot selection seems to be good enough to not benefit from the addition of partition busting.
+
+However, PdqSort1 vs QuickSort1 on an array of random integers is significant (as per my benchmarks, which may be flawed), which may be a demonstration of the isolated benefits of purely bad partition busting bolted onto a basic quicksort:
+
+```
+sevagh:go-sort $ go test -benchmem -run=^a -bench='.*(QuickSort1|PdqSort1).*Random(8192|65536)$' -v
+goos: linux
+goarch: amd64
+pkg: github.com/sevagh/go-sort
+BenchmarkPdqSort1Random8192-8               3015            383876 ns/op               0 B/op          0 allocs/op
+BenchmarkPdqSort1Random65536-8               121           9831749 ns/op               0 B/op          0 allocs/op
+BenchmarkQuickSort1Random8192-8              100          25272420 ns/op               0 B/op          0 allocs/op
+BenchmarkQuickSort1Random65536-8             100        1673251259 ns/op               0 B/op          0 allocs/op
+PASS
+ok      github.com/sevagh/go-sort       173.248s
+```
 
 Additional reading for quicksort:
 
