@@ -163,3 +163,11 @@ func TestPdqSort1BentleyMcIlroy(t *testing.T) {
 func TestPdqSort3BentleyMcIlroy(t *testing.T) {
 	testBentleyMcIlroy(t, gosort.PdqSort3)
 }
+
+func TestBlockQuickSort1BentleyMcIlroy(t *testing.T) {
+	testBentleyMcIlroy(t, gosort.BlockQuickSort1)
+}
+
+func TestBlockQuickSort2BentleyMcIlroy(t *testing.T) {
+	testBentleyMcIlroy(t, gosort.BlockQuickSort2)
+}

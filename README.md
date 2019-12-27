@@ -15,11 +15,15 @@ The goal of this project was to implement minimal versions of **timsort** and **
 | QuickSort1 | CLRS | Naive pivot selection (A[r]) |
 | QuickSort2 | [golang pkg/sort](https://golang.org/pkg/sort/#Sort) | Uses median-of-three partitioning, drops to insertionSort and heapSort in some cases. It looks like [introsort](https://en.wikipedia.org/wiki/Introsort). Partitioning looks like Hoare's partitioning scheme |
 | QuickSort3 | CLRS | Randomized pivot selection |
+| BlockQuickSort1 | [go-pdqsort](https://github.com/MnO2/go-pdqsort) | QuickSort1 with block quicksort ([[1]](https://arxiv.org/abs/1604.06697) |
+| BlockQuickSort2 | [go-pdqsort](https://github.com/MnO2/go-pdqsort) | QuickSort2 with block quicksort ([[1]](https://arxiv.org/abs/1604.06697) |
 | PdqSort1 | [pdqsort](https://github.com/orlp/pdqsort) | QuickSort1 with added bad partition detection and elimination |
 | PdqSort2 | [pdqsort](https://github.com/orlp/pdqsort) | QuickSort2 with added bad partition detection and elimination |
 | PdqSort3 | [pdqsort](https://github.com/orlp/pdqsort) | QuickSort3 with added bad partition detection and elimination |
 
 QuickSort1 vs QuickSort3 shows the importance of picking good pivots in quicksort.
+
+#### PdqSort
 
 Parts of PdqSort implemented:
 
@@ -42,11 +46,20 @@ PASS
 ok      github.com/sevagh/go-sort       173.248s
 ```
 
-Additional reading for quicksort:
+#### Block QuickSort
 
-1. S. Edelkamp, A. Weiß, "BlockQuicksort: Avoiding Branch Mispredictions in Quicksort", [link](https://pdfs.semanticscholar.org/b24e/f8021811cd4ef0fcc96a770657b664ee5b52.pdf)
-2. M. D. McIlroy, "A Killer Adversary for Quicksort", [link](https://www.cs.dartmouth.edu/~doug/mdmspe.pdf)
-3. The above adversary test in Go's sort pkg [tests](https://github.com/golang/go/blob/master/src/sort/sort_test.go#L455)
+BlockQuickSort1 shows good performance improvements over QuickSort1:
+
+```
+sevagh:go-sort $ go test -benchmem -run=^a -bench='.*(QuickSort1).*Random65536$' -v
+goos: linux
+goarch: amd64
+pkg: github.com/sevagh/go-sort
+BenchmarkBlockQuickSort1Random65536-8                100        1731103439 ns/op              16 B/op          0 allocs/op
+BenchmarkQuickSort1Random65536-8                     100        4008961929 ns/op               3 B/op          0 allocs/op
+PASS
+ok      github.com/sevagh/go-sort       574.036s
+```
 
 ### Mergesort
 
@@ -101,7 +114,11 @@ ok      github.com/sevagh/go-mergesort  12.053s
 
 I'm surprised by how well my naive implementation of timsort is performing - I'm sure it can be made better.
 
-Additional reading for timsort:
+### References
 
 1. Python [implementation](https://github.com/python/cpython/blob/master/Objects/listobject.c) and [description](https://github.com/python/cpython/blob/master/Objects/listsort.txt)
 2. High level descriptions of timsort I used to write my implementation: [here](https://medium.com/@rylanbauermeister/understanding-timsort-191c758a42f3?) and [here](https://wiki.c2.com/?TimSort)
+3. S. Edelkamp, A. Weiß, "BlockQuicksort: Avoiding Branch Mispredictions in Quicksort", [link](https://pdfs.semanticscholar.org/b24e/f8021811cd4ef0fcc96a770657b664ee5b52.pdf)
+4. M. D. McIlroy, "A Killer Adversary for Quicksort", [link](https://www.cs.dartmouth.edu/~doug/mdmspe.pdf)
+5. The above adversary test in Go's sort pkg [tests](https://github.com/golang/go/blob/master/src/sort/sort_test.go#L455)
+6. sort.go 
