@@ -2,6 +2,7 @@ package gosort
 
 // copied from https://raw.githubusercontent.com/golang/go/master/src/sort/sort.go
 
+// InsertionSort is copied from pkg/sort
 func InsertionSort(nums []int) {
 	insertionSort(nums, 0, len(nums))
 }

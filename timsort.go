@@ -1,13 +1,11 @@
 package gosort
 
-// a simplistic timsort
+// TimSort is a simplistic implementation of timsort with no galloping
 //
-// implemented from Python's timsort
+// sources:
 // https://github.com/python/cpython/blob/master/Objects/listobject.c
-//
-// and the high-level description of timsort here: https://medium.com/@rylanbauermeister/understanding-timsort-191c758a42f3?
+// https://medium.com/@rylanbauermeister/understanding-timsort-191c758a42f3
 // https://wiki.c2.com/?TimSort
-
 func TimSort(nums []int) {
 	n := len(nums)
 	currOffset := 0
@@ -49,7 +47,7 @@ func countRun(nums []int, a int) int {
 	// strictly descending only, for stability
 	for i := a + 1; i < len(nums); i++ {
 		if nums[i] < nums[i-1] {
-			descRun += 1
+			descRun++
 		}
 
 		if descRun == prevDescRun {
@@ -67,7 +65,7 @@ func countRun(nums []int, a int) int {
 		for i := a + 1; i < len(nums); i++ {
 			// ascending can be looser
 			if nums[i] >= nums[i-1] {
-				ascRun += 1
+				ascRun++
 			}
 
 			if ascRun == prevAscRun {

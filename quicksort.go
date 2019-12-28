@@ -1,11 +1,42 @@
 package gosort
 
-// Quicksort, loosely following Bentley and McIlroy,
-// ``Engineering a Sort Function,'' SP&E November 1993.
+import "math/rand"
 
+// QuickSort1 implements CLRS quicksort with basic pivot selection
+func QuickSort1(nums []int) {
+	quickSort1(nums, 0, len(nums)-1)
+}
+
+// QuickSort2 is copied from pkg/sort - looks like introsort
 func QuickSort2(nums []int) {
 	n := len(nums)
-	quickSort(nums, 0, n, maxDepth(n))
+	quickSort2(nums, 0, n, maxDepth(n))
+}
+
+// QuickSort3 implements CLRS quicksort with randomized pivot selection
+func QuickSort3(nums []int) {
+	quickSort3(nums, 0, len(nums)-1)
+}
+
+func quickSort1(nums []int, p, r int) {
+	if p < r {
+		q, _ := partition1(nums, p, r)
+		quickSort1(nums, p, q-1)
+		quickSort1(nums, q+1, r)
+	}
+}
+
+func partition1(nums []int, p, r int) (int, int) {
+	x := nums[r]
+	i := p - 1
+	for j := p; j < r; j++ {
+		if nums[j] <= x {
+			i++
+			nums[i], nums[j] = nums[j], nums[i]
+		}
+	}
+	nums[i+1], nums[r] = nums[r], nums[i+1]
+	return i + 1, r
 }
 
 func maxDepth(n int) int {
@@ -119,7 +150,7 @@ func doPivot(nums []int, lo, hi int) (midlo, midhi int) {
 	return b - 1, c
 }
 
-func quickSort(nums []int, a, b, maxDepth int) {
+func quickSort2(nums []int, a, b, maxDepth int) {
 	for b-a > 12 { // Use ShellSort for slices <= 12 elements
 		if maxDepth == 0 {
 			heapSort(nums, a, b)
@@ -131,10 +162,10 @@ func quickSort(nums []int, a, b, maxDepth int) {
 		// Avoiding recursion on the larger subproblem guarantees
 		// a stack depth of at most lg(b-a).
 		if mlo-a < b-mhi {
-			quickSort(nums, a, mlo, maxDepth)
+			quickSort2(nums, a, mlo, maxDepth)
 			a = mhi // i.e., quickSort(data, mhi, b)
 		} else {
-			quickSort(nums, mhi, b, maxDepth)
+			quickSort2(nums, mhi, b, maxDepth)
 			b = mlo // i.e., quickSort(data, a, mlo)
 		}
 	}
@@ -148,4 +179,18 @@ func quickSort(nums []int, a, b, maxDepth int) {
 		}
 		insertionSort(nums, a, b)
 	}
+}
+
+func quickSort3(nums []int, p, r int) {
+	if p < r {
+		q, _ := partition3(nums, p, r)
+		quickSort3(nums, p, q-1)
+		quickSort3(nums, q+1, r)
+	}
+}
+
+func partition3(nums []int, p, r int) (int, int) {
+	i := rand.Intn(r-p) + p
+	nums[i], nums[r] = nums[r], nums[i]
+	return partition1(nums, p, r)
 }

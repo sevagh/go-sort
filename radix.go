@@ -1,12 +1,6 @@
 package gosort
 
-// a radix sort with counting sort from CLRS
-//
-// assume the numbers are decimal i.e. digits = 0-9
-// enabling us to use counting sort easily
-
-var PowersOf10 = []int{1, 10, 100, 1000, 10000, 100000, 1000000, 10000000, 100000000, 1000000000, 100000000000}
-
+// RadixSort is based on a radix sort + counting sort for decimal digits from CLRS
 func RadixSort(nums []int) {
 	count := [10]int{0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
 	result := make([]int, len(nums))
@@ -14,14 +8,14 @@ func RadixSort(nums []int) {
 	// max int is 2,147,483,647 > we care about 10 digits
 	for i := 0; i < 10; i++ {
 		for _, num := range nums {
-			count[(num/PowersOf10[i])%10] += 1
+			count[(num/powersOf10[i])%10]++
 		}
 
 		resultIdx := 0
 		for j, c := range count {
 			if c != 0 {
 				for k := 0; k < c; k++ {
-					result[resultIdx] += j * PowersOf10[i]
+					result[resultIdx] += j * powersOf10[i]
 					resultIdx++
 				}
 			}
@@ -33,3 +27,5 @@ func RadixSort(nums []int) {
 
 	copy(nums, result)
 }
+
+var powersOf10 = []int{1, 10, 100, 1000, 10000, 100000, 1000000, 10000000, 100000000, 1000000000, 100000000000}

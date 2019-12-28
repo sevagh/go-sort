@@ -1,7 +1,15 @@
+/*
+Package gosort implements several sorting algorithms and experiments.
+*/
 package gosort
 
 // copy-pasted from
 // https://github.com/golang/go/blob/master/src/sort/sort.go
+
+// HeapSort is copied from pkg/sort
+func HeapSort(nums []int) {
+	heapSort(nums, 0, len(nums))
+}
 
 // siftDown implements the heap property on nums[lo, hi).
 // first is an offset into the array where the root of the heap lies.

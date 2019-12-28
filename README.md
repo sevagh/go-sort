@@ -4,6 +4,7 @@ A collection of Go sort experiments and implementations.
 
 The goal of this project was to implement minimal versions of **timsort** and **pdqsort** and validate their performance improvement over standard mergesort and quicksort. Also included are:
 
+* BlockQuickSort
 * RadixSort (using counting sort on decimal digits)
 * heapSort (from go/pkg/sort)
 * insertionSort (from go/pkg/sort)
@@ -27,7 +28,7 @@ QuickSort1 vs QuickSort3 shows the importance of picking good pivots in quicksor
 
 Parts of PdqSort implemented:
 
-1. Check partitions that are bad and do swaps to fix them (swaps taken from the [Rust pdqsort implementation](https://docs.rs/pdqsort/0.1.0/src/pdqsort/lib.rs.html#427))
+1. Check partitions that are bad and do swaps to fix them (swaps taken from the 
 
 Results for PdqSort2 were expectedly disappointing. Some gains, some losses, given my amateurish modifications on top of Go's standard, optimized quicksort. Same goes for PdqSort3 vs. QuickSort3, where the random pivot selection seems to be good enough to not benefit from the addition of partition busting.
 
@@ -48,7 +49,7 @@ ok      github.com/sevagh/go-sort       173.248s
 
 #### Block QuickSort
 
-BlockQuickSort1 shows good performance improvements over QuickSort1:
+BlockQuickSort1 shows a good performance improvement over QuickSort1:
 
 ```
 sevagh:go-sort $ go test -benchmem -run=^a -bench='.*(QuickSort1).*Random65536$' -v
@@ -116,8 +117,6 @@ I'm surprised by how well my naive implementation of timsort is performing - I'm
 
 ### References
 
-1. Python [implementation](https://github.com/python/cpython/blob/master/Objects/listobject.c) and [description](https://github.com/python/cpython/blob/master/Objects/listsort.txt)
-2. High level descriptions of timsort I used to write my implementation: [here](https://medium.com/@rylanbauermeister/understanding-timsort-191c758a42f3?) and [here](https://wiki.c2.com/?TimSort)
 3. S. Edelkamp, A. Weiß, "BlockQuicksort: Avoiding Branch Mispredictions in Quicksort", [link](https://pdfs.semanticscholar.org/b24e/f8021811cd4ef0fcc96a770657b664ee5b52.pdf)
 4. M. D. McIlroy, "A Killer Adversary for Quicksort", [link](https://www.cs.dartmouth.edu/~doug/mdmspe.pdf)
 5. The above adversary test in Go's sort pkg [tests](https://github.com/golang/go/blob/master/src/sort/sort_test.go#L455)
