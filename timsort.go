@@ -109,6 +109,28 @@ func reduceOddMergeBoundaries(nums []int, mergeBoundaries *[][2]int) {
 	}
 }
 
+/*
+pseudocode for how the merging works in timsort:
+
+boundaries = [[a, b], [b, c], [c, d], [d, e]]
+
+for len(boundaries) > 1 {
+    for i := 0; i < len(boundaries); i += 2 {
+        // first iteration: i = 0
+        // consider [a, b] and [b, c]
+        symMerge(a, b, c)
+        boundaries[0/2] = [a, c]
+
+        // second iteration: i = 1
+        // consider [c, d] and [d, e]
+        symMerge(c, d, e)
+        boundaries[1/2] = [c, e]
+    }
+    boundaries = boundaries[:len(boundaries)/2]
+    // boundaries = [[a, c], [c, e]]
+}
+*/
+
 func mergeOnBoundaries(nums []int, mergeBoundaries *[][2]int) {
 	// here, we have to repeatedly merge on the boundaries
 	// merge duples from the beginning and end

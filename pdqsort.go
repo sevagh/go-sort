@@ -1,12 +1,22 @@
 package gosort
 
-import "math"
+import (
+	"math"
+	"sort"
+)
 
 // PdqSort1 implements CLRS bad pivot quicksort with pdq bad pivot pattern breaking
 //
 // Bad-pattern busting is copied from the Rust pdqsort implementation, https://docs.rs/pdqsort/0.1.0/src/pdqsort/lib.rs.html#427
 func PdqSort1(nums []int) {
 	pdqSort1(nums, 0, len(nums)-1, allowedBadPartitions(len(nums)-1, 0))
+}
+
+// PdqSortIface1 implements CLRS bad pivot quicksort with pdq bad pivot pattern breaking on a sort.Interface
+//
+// This is to verify the effect of pattern-busting on the killer adversary
+func PdqSortIface1(data sort.Interface) {
+	pdqSortIface1(data, 0, data.Len()-1, allowedBadPartitions(data.Len()-1, 0))
 }
 
 // PdqSort2 modifies pkg/sort's introsort quicksort with pdq bad pivot pattern breaking
@@ -37,6 +47,23 @@ func breakPatterns(nums []int) {
 
 			nums[n-2], nums[n-n/2-1] = nums[n-n/2-1], nums[n-2]
 			nums[n-3], nums[n-n/2-2] = nums[n-n/2-2], nums[n-3]
+		}
+	}
+}
+
+func breakPatternsIface(data sort.Interface, a, b int) {
+	n := b - a
+
+	if n >= 4 {
+		data.Swap(a, a+n/2)
+		data.Swap(b-1, b-n/2)
+
+		if n >= 8 {
+			data.Swap(a+1, a+1+n/2)
+			data.Swap(a+2, a+2+n/2)
+
+			data.Swap(b-2, b-n/2-1)
+			data.Swap(b-3, b-n/2-2)
 		}
 	}
 }
@@ -121,6 +148,34 @@ func pdqSort1(nums []int, p, r, badAllowed int) {
 
 		pdqSort1(nums, p, q-1, badAllowed)
 		pdqSort1(nums, q+1, r, badAllowed)
+	}
+}
+
+func pdqSortIface1(data sort.Interface, p, r, badAllowed int) {
+	if p < r {
+		q, pivot := partitionIface1(data, p, r)
+
+		lSize := pivot - p
+		rSize := r - (pivot + 1)
+		highlyUnbalanced := lSize < data.Len()/8 || rSize < data.Len()/8
+
+		if highlyUnbalanced {
+			// do some specific swaps here per pdqsort
+			// https://github.com/orlp/pdqsort/blob/master/pdqsort.h#L467
+			badAllowed--
+
+			// too many bad partitions encountered, time to bail
+			if badAllowed == 0 {
+				heapSortIface(data, p, r)
+				return
+			}
+
+			breakPatternsIface(data, p, q)
+			breakPatternsIface(data, q+1, r+1)
+		}
+
+		pdqSortIface1(data, p, q-1, badAllowed)
+		pdqSortIface1(data, q+1, r, badAllowed)
 	}
 }
 

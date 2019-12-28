@@ -1,10 +1,20 @@
 package gosort
 
-import "math/rand"
+import (
+	"math/rand"
+	"sort"
+)
 
 // QuickSort1 implements CLRS quicksort with basic pivot selection
 func QuickSort1(nums []int) {
 	quickSort1(nums, 0, len(nums)-1)
+}
+
+// QuickSortIface1 implements CLRS quicksort with basic pivot selection
+//
+// using the sorting.Interface
+func QuickSortIface1(data sort.Interface) {
+	quickSortIface1(data, 0, data.Len()-1)
 }
 
 // QuickSort2 is copied from pkg/sort - looks like introsort
@@ -26,6 +36,14 @@ func quickSort1(nums []int, p, r int) {
 	}
 }
 
+func quickSortIface1(data sort.Interface, p, r int) {
+	if p < r {
+		q, _ := partitionIface1(data, p, r)
+		quickSortIface1(data, p, q-1)
+		quickSortIface1(data, q+1, r)
+	}
+}
+
 func partition1(nums []int, p, r int) (int, int) {
 	x := nums[r]
 	i := p - 1
@@ -36,6 +54,18 @@ func partition1(nums []int, p, r int) (int, int) {
 		}
 	}
 	nums[i+1], nums[r] = nums[r], nums[i+1]
+	return i + 1, r
+}
+
+func partitionIface1(data sort.Interface, p, r int) (int, int) {
+	i := p - 1
+	for j := p; j < r; j++ {
+		if data.Less(j, r) {
+			i++
+			data.Swap(i, j)
+		}
+	}
+	data.Swap(i+1, r)
 	return i + 1, r
 }
 

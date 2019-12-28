@@ -2,37 +2,26 @@
 
 A collection of Go sort experiments and implementations.
 
-The goal of this project was to implement minimal versions of **timsort** and **pdqsort** and validate their performance improvement over standard mergesort and quicksort. Also included are:
+The goal of this project was to implement minimal versions of **timsort** and **pdqsort** and validate their performance improvement over standard mergesort and quicksort. It includes many search algorithms copied or adapted from Go's [pkg/sort](https://golang.org/src/sort/sort.go).
 
-* BlockQuickSort
-* RadixSort (using counting sort on decimal digits)
-* heapSort (from go/pkg/sort)
-* insertionSort (from go/pkg/sort)
+Many implementations are for `[]int`, but some are for `sort.Interface` to enable quicksort killer adversary testing.
 
-### Quicksort
+Lessons learned:
 
-| Function   | Source | Notes |
-|------------|--------|-------|
-| QuickSort1 | CLRS | Naive pivot selection (A[r]) |
-| QuickSort2 | [golang pkg/sort](https://golang.org/pkg/sort/#Sort) | Uses median-of-three partitioning, drops to insertionSort and heapSort in some cases. It looks like [introsort](https://en.wikipedia.org/wiki/Introsort). Partitioning looks like Hoare's partitioning scheme |
-| QuickSort3 | CLRS | Randomized pivot selection |
-| BlockQuickSort1 | [go-pdqsort](https://github.com/MnO2/go-pdqsort) | QuickSort1 with block quicksort ([[1]](https://arxiv.org/abs/1604.06697) |
-| BlockQuickSort2 | [go-pdqsort](https://github.com/MnO2/go-pdqsort) | QuickSort2 with block quicksort ([[1]](https://arxiv.org/abs/1604.06697) |
-| PdqSort1 | [pdqsort](https://github.com/orlp/pdqsort) | QuickSort1 with added bad partition detection and elimination |
-| PdqSort2 | [pdqsort](https://github.com/orlp/pdqsort) | QuickSort2 with added bad partition detection and elimination |
-| PdqSort3 | [pdqsort](https://github.com/orlp/pdqsort) | QuickSort3 with added bad partition detection and elimination |
+1. sort.Sort in pkg/sort (QuickSort2 in this package) is introsort
+2. sort.Stable in pkg/sort (MergeSort2 in this package) is block-insertion-sort-plus-merge - not very dissimilar to TimSort, but with fixed-size blocks instead of different-sized already-ordered runs
+3. Implementing a basic form of TimSort without galloping or magic constants was actually rather intuitive and led to good performance gains by leveraging the symMerge (in-place merge) routine already implemented for sort.Stable in pkg/sort
+4. The Block Quicksort modification of pdqsort gives worse performance in Go
 
-QuickSort1 vs QuickSort3 shows the importance of picking good pivots in quicksort.
+Here's a conclusion from a different go-pdqsort implementation that might explain it:
 
-#### PdqSort
+>From the result the pattern defeating sort is much slower than the sort from standrad library. It is expected since go's memory layout is mainly heap managed and it is very different from what's in C++ and Rust. Therefore the key invention from pdqsort to reduce the cpu branch prediction is not impactful on speed, and slowing down due to more memory access.
 
-Parts of PdqSort implemented:
+\- https://github.com/MnO2/go-pdqsort
 
-1. Check partitions that are bad and do swaps to fix them (swaps taken from the 
+So far the notable implementations of pdqsort have been the [original in C++](https://github.com/orlp/pdqsort) and the [Rust implementation](https://github.com/stjepang/pdqsort).
 
-Results for PdqSort2 were expectedly disappointing. Some gains, some losses, given my amateurish modifications on top of Go's standard, optimized quicksort. Same goes for PdqSort3 vs. QuickSort3, where the random pivot selection seems to be good enough to not benefit from the addition of partition busting.
-
-However, PdqSort1 vs QuickSort1 on an array of random integers is significant (as per my benchmarks, which may be flawed), which may be a demonstration of the isolated benefits of purely bad partition busting bolted onto a basic quicksort. This might be a tautological conclusion since QuickSort1 picks almost the worst partition:
+5. The bad partition/pattern busting part of pdqsort has a good performance boost over a standard CLRS quicksort with bad partition selection
 
 ```
 sevagh:go-sort $ go test -benchmem -run=^a -bench='.*(QuickSort1|PdqSort1).*Random(8192|65536)$' -v
@@ -47,77 +36,58 @@ PASS
 ok      github.com/sevagh/go-sort       173.248s
 ```
 
-#### Block QuickSort
-
-BlockQuickSort1 shows a good performance improvement over QuickSort1:
+6. Overall pdqsort is more difficult to implement than timsort
+7. The embedded [bigO](./bigO) library for least squares fitting BigO estimation is a good method of validating or verifying any of the implemented algorithms:
 
 ```
-sevagh:go-sort $ go test -benchmem -run=^a -bench='.*(QuickSort1).*Random65536$' -v
-goos: linux
-goarch: amd64
-pkg: github.com/sevagh/go-sort
-BenchmarkBlockQuickSort1Random65536-8                100        1731103439 ns/op              16 B/op          0 allocs/op
-BenchmarkQuickSort1Random65536-8                     100        4008961929 ns/op               3 B/op          0 allocs/op
+sevagh:go-sort $ go test -v -count=1 -run='BigO'
+=== RUN   TestBigOTimSort
+--- PASS: TestBigOTimSort (4.32s)
+    bigo_test.go:27: O(Nlg(N))
+=== RUN   TestBigOQuickSort1WorstCase
+--- PASS: TestBigOQuickSort1WorstCase (0.00s)
+    bigo_test.go:46: O(N^2)
+=== RUN   TestBigOInsertionSortAscending
+--- PASS: TestBigOInsertionSortAscending (0.00s)
+    bigo_test.go:65: O(N^2)
+=== RUN   TestBigOInsertionSortRandom
+--- PASS: TestBigOInsertionSortRandom (0.00s)
+    bigo_test.go:84: O(Nlg(N))
 PASS
-ok      github.com/sevagh/go-sort       574.036s
+ok      github.com/sevagh/go-sort       4.328s
 ```
 
-### Mergesort
-
-| Function   | Source | Notes |
-|------------|--------|-------|
-| MergeSort1 | CLRS | Basic recursive implementation |
-| MergeSort2 | [golang pkg/sort](https://golang.org/pkg/sort/#Stable) | Implements in-place symmetric merge ([[1]](https://www.semanticscholar.org/paper/Stable-Minimum-Storage-Merging-by-Symmetric-Kim-Kutzner/d664cee462cb8e6a8ae2a1a7c6bab1b5f81e0618)) and does insertion sort by blocks |
-| MergeSort3 | Goodrich & Tamassia | Bottom-up iterative merge sort |
-| TimSort | Various timsort sources | No galloping, and uses the same in-place symmetric merge as MergeSort2 |
-
-Parts of TimSort implemented:
-
-1. Calculate minimum ascending runs of at least 32 in length (insertion sort to 32 if less)
-    1. If the descending run is bigger, reverse it in-place and use that as the minrun
-2. Record the boundaries between runs on which to merge the sorted minruns
-3. Merge on the boundaries as follows (pseudocode):
+E.g. showing that the pattern-busting of PdqSort1 (that's essentially only just bolted onto QuickSort1) reduces the worst case O(N^2):
 
 ```
-boundaries = [[a, b], [b, c], [c, d], [d, e]]
-
-for len(boundaries) > 1 {
-    for i := 0; i < len(boundaries); i += 2 {
-        // first iteration: i = 0
-        // consider [a, b] and [b, c]
-        symMerge(a, b, c)
-        boundaries[0/2] = [a, c]
-
-        // second iteration: i = 1
-        // consider [c, d] and [d, e]
-        symMerge(c, d, e)
-        boundaries[1/2] = [c, e]
-    }
-    boundaries = boundaries[:len(boundaries)/2]
-    // boundaries = [[a, c], [c, e]]
-}
-```
-
-Benches for 1 million random ints:
-
-```
-sevagh:go-mergesort $ go test -benchmem -run=^a -bench='.*Merge.*Random1048576$' -v
-goos: linux
-goarch: amd64
-pkg: github.com/sevagh/go-mergesort
-BenchmarkMergeSort1Random1048576-8            10         112270897 ns/op        204194092 B/op   2097151 allocs/op
-BenchmarkMergeSort2Random1048576-8           264           4090389 ns/op               0 B/op          0 allocs/op
-BenchmarkMergeSort3Random1048576-8           758           1390610 ns/op            2359 B/op          1 allocs/op
-BenchmarkMergeSort4Random1048576-8            30          34546053 ns/op        16777232 B/op          2 allocs/op
+sevagh:go-sort $ go test -v -count=1 -run='WorstCase'
+=== RUN   TestBigOQuickSort1WorstCase
+--- PASS: TestBigOQuickSort1WorstCase (0.00s)
+    bigo_test.go:46: O(N^2)
+=== RUN   TestBigOPdqSort1WorstCaseQuickSort
+--- PASS: TestBigOPdqSort1WorstCaseQuickSort (0.00s)
+    bigo_test.go:103: O(N)
 PASS
-ok      github.com/sevagh/go-mergesort  12.053s
+ok      github.com/sevagh/go-sort       0.002s
 ```
 
-I'm surprised by how well my naive implementation of timsort is performing - I'm sure it can be made better.
+8. I learned of the [killer adversary for quicksort](https://www.cs.dartmouth.edu/~doug/mdmspe.pdf), which is implemented in [sort_test.go](https://github.com/golang/go/blob/master/src/sort/sort_test.go#L456) in the Golang stdlib pkg/sort (and copied here in adversary_test.go). Verification with a handful of `sort.Interface`-based versions of QuickSort and PdqSort:
 
-### References
+```
+sevagh:go-sort $ go test -v -run 'Adversary'
+=== RUN   TestQuickSortIface1Adversary
+--- FAIL: TestQuickSortIface1Adversary (0.00s)
+    adversary_test.go:24: used 560000 comparisons sorting adversary data with size 10000
+=== RUN   TestPdqSortIface1Adversary
+--- FAIL: TestPdqSortIface1Adversary (0.00s)
+    adversary_test.go:24: used 560000 comparisons sorting adversary data with size 10000
+=== RUN   TestAdversaryStdSort
+--- PASS: TestAdversaryStdSort (0.00s)
+FAIL
+exit status 1
+FAIL    github.com/sevagh/go-sort       0.011s
+```
 
-3. S. Edelkamp, A. Weiß, "BlockQuicksort: Avoiding Branch Mispredictions in Quicksort", [link](https://pdfs.semanticscholar.org/b24e/f8021811cd4ef0fcc96a770657b664ee5b52.pdf)
-4. M. D. McIlroy, "A Killer Adversary for Quicksort", [link](https://www.cs.dartmouth.edu/~doug/mdmspe.pdf)
-5. The above adversary test in Go's sort pkg [tests](https://github.com/golang/go/blob/master/src/sort/sort_test.go#L455)
-6. sort.go 
+Here we see `sort.Sort`, which is introsort (QuickSort2 in this project), does well. QuickSort1 is obviously vulnerable. PdqSort1 with its bad partition busting is still not clever enough to escape the killer adversary.
+
+Given the direct `[]int` implementation of all the algorithms here, the caller has no control on the implementation of the sort interface (namely the Less method), so the killer adversary is irrelevant.
