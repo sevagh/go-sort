@@ -8,6 +8,25 @@ import (
 	"github.com/sevagh/go-sort/bigO"
 )
 
+func TestBigOBitonicSort(t *testing.T) {
+	sizes := []int{10, 100, 1000, 10000, 100000, 10000000}
+	times := []float64{}
+
+	for _, size := range sizes {
+		timeTaken := 0.0
+		nums := RandomInt(size)
+
+		start := time.Now()
+		gosort.BitonicSort(nums)
+		timeTaken += time.Since(start).Seconds()
+
+		times = append(times, timeTaken)
+	}
+
+	complexity, _ := bigO.Estimate(sizes, times)
+	t.Logf(complexity.String())
+}
+
 func TestBigOTimSort(t *testing.T) {
 	sizes := []int{10, 100, 1000, 10000, 100000, 10000000}
 	times := []float64{}
