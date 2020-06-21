@@ -16,6 +16,11 @@ bench: run:=Bench
 bench: runarg:=-bench=
 bench: test
 
+profile: GO_TEST_FLAGS:=$(GO_BENCH_PROFILE_FLAGS)
+profile: run:=Bench
+profile: runarg:=-bench=
+profile: test
+
 test:
 	go test $(GO_TEST_FLAGS) $(component) $(runarg)$(run)
 
