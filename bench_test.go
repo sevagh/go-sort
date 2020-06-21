@@ -12379,3 +12379,822 @@ func BenchmarkBlockQuickSortControl2PushMiddle1048576(b *testing.B) {
 		b.Fatalf("fail!")
 	}
 }
+
+func BenchmarkBitonicSortRandom8(b *testing.B) {
+	b.StopTimer()
+	nums := RandomInt(8)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.BitonicSort(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkBitonicSortShuffled8(b *testing.B) {
+	b.StopTimer()
+	nums := ShuffledInt(8)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.BitonicSort(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkBitonicSortShuffled16Values8(b *testing.B) {
+	b.StopTimer()
+	nums := Shuffled16ValuesInt(8)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.BitonicSort(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkBitonicSortAllEqual8(b *testing.B) {
+	b.StopTimer()
+	nums := AllEqualInt(8)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.BitonicSort(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkBitonicSortAscending8(b *testing.B) {
+	b.StopTimer()
+	nums := AscendingInt(8)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.BitonicSort(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkBitonicSortDescending8(b *testing.B) {
+	b.StopTimer()
+	nums := DescendingInt(8)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.BitonicSort(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkBitonicSortPipeOrgan8(b *testing.B) {
+	b.StopTimer()
+	nums := PipeOrganInt(8)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.BitonicSort(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkBitonicSortPushFront8(b *testing.B) {
+	b.StopTimer()
+	nums := PushFrontInt(8)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.BitonicSort(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkBitonicSortPushMiddle8(b *testing.B) {
+	b.StopTimer()
+	nums := PushMiddleInt(8)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.BitonicSort(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkBitonicSortRandom32(b *testing.B) {
+	b.StopTimer()
+	nums := RandomInt(32)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.BitonicSort(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkBitonicSortShuffled32(b *testing.B) {
+	b.StopTimer()
+	nums := ShuffledInt(32)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.BitonicSort(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkBitonicSortShuffled16Values32(b *testing.B) {
+	b.StopTimer()
+	nums := Shuffled16ValuesInt(32)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.BitonicSort(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkBitonicSortAllEqual32(b *testing.B) {
+	b.StopTimer()
+	nums := AllEqualInt(32)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.BitonicSort(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkBitonicSortAscending32(b *testing.B) {
+	b.StopTimer()
+	nums := AscendingInt(32)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.BitonicSort(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkBitonicSortDescending32(b *testing.B) {
+	b.StopTimer()
+	nums := DescendingInt(32)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.BitonicSort(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkBitonicSortPipeOrgan32(b *testing.B) {
+	b.StopTimer()
+	nums := PipeOrganInt(32)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.BitonicSort(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkBitonicSortPushFront32(b *testing.B) {
+	b.StopTimer()
+	nums := PushFrontInt(32)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.BitonicSort(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkBitonicSortPushMiddle32(b *testing.B) {
+	b.StopTimer()
+	nums := PushMiddleInt(32)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.BitonicSort(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkBitonicSortRandom128(b *testing.B) {
+	b.StopTimer()
+	nums := RandomInt(128)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.BitonicSort(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkBitonicSortShuffled128(b *testing.B) {
+	b.StopTimer()
+	nums := ShuffledInt(128)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.BitonicSort(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkBitonicSortShuffled16Values128(b *testing.B) {
+	b.StopTimer()
+	nums := Shuffled16ValuesInt(128)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.BitonicSort(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkBitonicSortAllEqual128(b *testing.B) {
+	b.StopTimer()
+	nums := AllEqualInt(128)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.BitonicSort(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkBitonicSortAscending128(b *testing.B) {
+	b.StopTimer()
+	nums := AscendingInt(128)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.BitonicSort(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkBitonicSortDescending128(b *testing.B) {
+	b.StopTimer()
+	nums := DescendingInt(128)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.BitonicSort(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkBitonicSortPipeOrgan128(b *testing.B) {
+	b.StopTimer()
+	nums := PipeOrganInt(128)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.BitonicSort(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkBitonicSortPushFront128(b *testing.B) {
+	b.StopTimer()
+	nums := PushFrontInt(128)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.BitonicSort(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkBitonicSortPushMiddle128(b *testing.B) {
+	b.StopTimer()
+	nums := PushMiddleInt(128)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.BitonicSort(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkBitonicSortRandom1024(b *testing.B) {
+	b.StopTimer()
+	nums := RandomInt(1024)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.BitonicSort(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkBitonicSortShuffled1024(b *testing.B) {
+	b.StopTimer()
+	nums := ShuffledInt(1024)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.BitonicSort(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkBitonicSortShuffled16Values1024(b *testing.B) {
+	b.StopTimer()
+	nums := Shuffled16ValuesInt(1024)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.BitonicSort(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkBitonicSortAllEqual1024(b *testing.B) {
+	b.StopTimer()
+	nums := AllEqualInt(1024)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.BitonicSort(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkBitonicSortAscending1024(b *testing.B) {
+	b.StopTimer()
+	nums := AscendingInt(1024)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.BitonicSort(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkBitonicSortDescending1024(b *testing.B) {
+	b.StopTimer()
+	nums := DescendingInt(1024)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.BitonicSort(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkBitonicSortPipeOrgan1024(b *testing.B) {
+	b.StopTimer()
+	nums := PipeOrganInt(1024)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.BitonicSort(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkBitonicSortPushFront1024(b *testing.B) {
+	b.StopTimer()
+	nums := PushFrontInt(1024)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.BitonicSort(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkBitonicSortPushMiddle1024(b *testing.B) {
+	b.StopTimer()
+	nums := PushMiddleInt(1024)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.BitonicSort(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkBitonicSortRandom8192(b *testing.B) {
+	b.StopTimer()
+	nums := RandomInt(8192)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.BitonicSort(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkBitonicSortShuffled8192(b *testing.B) {
+	b.StopTimer()
+	nums := ShuffledInt(8192)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.BitonicSort(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkBitonicSortShuffled16Values8192(b *testing.B) {
+	b.StopTimer()
+	nums := Shuffled16ValuesInt(8192)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.BitonicSort(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkBitonicSortAllEqual8192(b *testing.B) {
+	b.StopTimer()
+	nums := AllEqualInt(8192)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.BitonicSort(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkBitonicSortAscending8192(b *testing.B) {
+	b.StopTimer()
+	nums := AscendingInt(8192)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.BitonicSort(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkBitonicSortDescending8192(b *testing.B) {
+	b.StopTimer()
+	nums := DescendingInt(8192)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.BitonicSort(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkBitonicSortPipeOrgan8192(b *testing.B) {
+	b.StopTimer()
+	nums := PipeOrganInt(8192)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.BitonicSort(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkBitonicSortPushFront8192(b *testing.B) {
+	b.StopTimer()
+	nums := PushFrontInt(8192)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.BitonicSort(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkBitonicSortPushMiddle8192(b *testing.B) {
+	b.StopTimer()
+	nums := PushMiddleInt(8192)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.BitonicSort(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkBitonicSortRandom65536(b *testing.B) {
+	b.StopTimer()
+	nums := RandomInt(65536)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.BitonicSort(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkBitonicSortShuffled65536(b *testing.B) {
+	b.StopTimer()
+	nums := ShuffledInt(65536)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.BitonicSort(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkBitonicSortShuffled16Values65536(b *testing.B) {
+	b.StopTimer()
+	nums := Shuffled16ValuesInt(65536)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.BitonicSort(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkBitonicSortAllEqual65536(b *testing.B) {
+	b.StopTimer()
+	nums := AllEqualInt(65536)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.BitonicSort(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkBitonicSortAscending65536(b *testing.B) {
+	b.StopTimer()
+	nums := AscendingInt(65536)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.BitonicSort(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkBitonicSortDescending65536(b *testing.B) {
+	b.StopTimer()
+	nums := DescendingInt(65536)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.BitonicSort(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkBitonicSortPipeOrgan65536(b *testing.B) {
+	b.StopTimer()
+	nums := PipeOrganInt(65536)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.BitonicSort(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkBitonicSortPushFront65536(b *testing.B) {
+	b.StopTimer()
+	nums := PushFrontInt(65536)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.BitonicSort(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkBitonicSortPushMiddle65536(b *testing.B) {
+	b.StopTimer()
+	nums := PushMiddleInt(65536)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.BitonicSort(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkBitonicSortRandom1048576(b *testing.B) {
+	b.StopTimer()
+	nums := RandomInt(1048576)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.BitonicSort(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkBitonicSortShuffled1048576(b *testing.B) {
+	b.StopTimer()
+	nums := ShuffledInt(1048576)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.BitonicSort(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkBitonicSortShuffled16Values1048576(b *testing.B) {
+	b.StopTimer()
+	nums := Shuffled16ValuesInt(1048576)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.BitonicSort(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkBitonicSortAllEqual1048576(b *testing.B) {
+	b.StopTimer()
+	nums := AllEqualInt(1048576)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.BitonicSort(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkBitonicSortAscending1048576(b *testing.B) {
+	b.StopTimer()
+	nums := AscendingInt(1048576)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.BitonicSort(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkBitonicSortDescending1048576(b *testing.B) {
+	b.StopTimer()
+	nums := DescendingInt(1048576)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.BitonicSort(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkBitonicSortPipeOrgan1048576(b *testing.B) {
+	b.StopTimer()
+	nums := PipeOrganInt(1048576)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.BitonicSort(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkBitonicSortPushFront1048576(b *testing.B) {
+	b.StopTimer()
+	nums := PushFrontInt(1048576)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.BitonicSort(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkBitonicSortPushMiddle1048576(b *testing.B) {
+	b.StopTimer()
+	nums := PushMiddleInt(1048576)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.BitonicSort(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}

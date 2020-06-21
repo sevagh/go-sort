@@ -1,8 +1,14 @@
-# go-sort
+Collection of Go sorting algorithms and experiments.
 
-A collection of Go sort experiments and implementations.
+Plots are log-log on both axes. My crude TimSort implementation does surprisingly well.
 
-The goal of this project was to implement minimal versions of **timsort** and **pdqsort** and validate their performance improvement over standard mergesort and quicksort. It includes many search algorithms copied or adapted from Go's [pkg/sort](https://golang.org/src/sort/sort.go).
+<img src="./.github/ns.png" width=512px>
+<img src="./.github/bytes.png" width=512px>
+<img src="./.github/allocs.png" width=512px>
+
+## Notes
+
+The original goal of this project was to implement minimal versions of **timsort** and **pdqsort** and validate their performance improvement over standard mergesort and quicksort. It includes many search algorithms copied or adapted from Go's [pkg/sort](https://golang.org/src/sort/sort.go).
 
 Many implementations are for `[]int`, but some are for `sort.Interface` to enable quicksort killer adversary testing.
 

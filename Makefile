@@ -1,7 +1,8 @@
 all: test
 
 GO_TEST_FLAGS:=-race -count=1 -v
-GO_BENCH_FLAGS:=-benchmem -v -cpuprofile=cpuprofile.out -memprofile=memprofile.out -run=^a
+GO_BENCH_PROFILE_FLAGS:=-benchmem -v -cpuprofile=cpuprofile.out -memprofile=memprofile.out -run=^a
+GO_BENCH_FLAGS:=-benchmem -v -run=^a
 run?=""
 runarg?=-run=
 component?=.
