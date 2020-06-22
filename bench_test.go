@@ -9923,12 +9923,12 @@ func BenchmarkRadixSortPushMiddle1048576(b *testing.B) {
 	}
 }
 
-func BenchmarkTimSortRandom8(b *testing.B) {
+func BenchmarkTimSort1Random8(b *testing.B) {
 	b.StopTimer()
 	nums := RandomInt(8)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.TimSort(nums)
+		gosort.TimSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -9936,12 +9936,12 @@ func BenchmarkTimSortRandom8(b *testing.B) {
 	}
 }
 
-func BenchmarkTimSortShuffled8(b *testing.B) {
+func BenchmarkTimSort1Shuffled8(b *testing.B) {
 	b.StopTimer()
 	nums := ShuffledInt(8)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.TimSort(nums)
+		gosort.TimSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -9949,12 +9949,12 @@ func BenchmarkTimSortShuffled8(b *testing.B) {
 	}
 }
 
-func BenchmarkTimSortShuffled16Values8(b *testing.B) {
+func BenchmarkTimSort1Shuffled16Values8(b *testing.B) {
 	b.StopTimer()
 	nums := Shuffled16ValuesInt(8)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.TimSort(nums)
+		gosort.TimSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -9962,12 +9962,12 @@ func BenchmarkTimSortShuffled16Values8(b *testing.B) {
 	}
 }
 
-func BenchmarkTimSortAllEqual8(b *testing.B) {
+func BenchmarkTimSort1AllEqual8(b *testing.B) {
 	b.StopTimer()
 	nums := AllEqualInt(8)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.TimSort(nums)
+		gosort.TimSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -9975,12 +9975,12 @@ func BenchmarkTimSortAllEqual8(b *testing.B) {
 	}
 }
 
-func BenchmarkTimSortAscending8(b *testing.B) {
+func BenchmarkTimSort1Ascending8(b *testing.B) {
 	b.StopTimer()
 	nums := AscendingInt(8)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.TimSort(nums)
+		gosort.TimSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -9988,12 +9988,12 @@ func BenchmarkTimSortAscending8(b *testing.B) {
 	}
 }
 
-func BenchmarkTimSortDescending8(b *testing.B) {
+func BenchmarkTimSort1Descending8(b *testing.B) {
 	b.StopTimer()
 	nums := DescendingInt(8)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.TimSort(nums)
+		gosort.TimSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -10001,12 +10001,12 @@ func BenchmarkTimSortDescending8(b *testing.B) {
 	}
 }
 
-func BenchmarkTimSortPipeOrgan8(b *testing.B) {
+func BenchmarkTimSort1PipeOrgan8(b *testing.B) {
 	b.StopTimer()
 	nums := PipeOrganInt(8)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.TimSort(nums)
+		gosort.TimSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -10014,12 +10014,12 @@ func BenchmarkTimSortPipeOrgan8(b *testing.B) {
 	}
 }
 
-func BenchmarkTimSortPushFront8(b *testing.B) {
+func BenchmarkTimSort1PushFront8(b *testing.B) {
 	b.StopTimer()
 	nums := PushFrontInt(8)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.TimSort(nums)
+		gosort.TimSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -10027,12 +10027,12 @@ func BenchmarkTimSortPushFront8(b *testing.B) {
 	}
 }
 
-func BenchmarkTimSortPushMiddle8(b *testing.B) {
+func BenchmarkTimSort1PushMiddle8(b *testing.B) {
 	b.StopTimer()
 	nums := PushMiddleInt(8)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.TimSort(nums)
+		gosort.TimSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -10040,12 +10040,12 @@ func BenchmarkTimSortPushMiddle8(b *testing.B) {
 	}
 }
 
-func BenchmarkTimSortRandom32(b *testing.B) {
+func BenchmarkTimSort1Random32(b *testing.B) {
 	b.StopTimer()
 	nums := RandomInt(32)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.TimSort(nums)
+		gosort.TimSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -10053,12 +10053,12 @@ func BenchmarkTimSortRandom32(b *testing.B) {
 	}
 }
 
-func BenchmarkTimSortShuffled32(b *testing.B) {
+func BenchmarkTimSort1Shuffled32(b *testing.B) {
 	b.StopTimer()
 	nums := ShuffledInt(32)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.TimSort(nums)
+		gosort.TimSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -10066,12 +10066,12 @@ func BenchmarkTimSortShuffled32(b *testing.B) {
 	}
 }
 
-func BenchmarkTimSortShuffled16Values32(b *testing.B) {
+func BenchmarkTimSort1Shuffled16Values32(b *testing.B) {
 	b.StopTimer()
 	nums := Shuffled16ValuesInt(32)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.TimSort(nums)
+		gosort.TimSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -10079,12 +10079,12 @@ func BenchmarkTimSortShuffled16Values32(b *testing.B) {
 	}
 }
 
-func BenchmarkTimSortAllEqual32(b *testing.B) {
+func BenchmarkTimSort1AllEqual32(b *testing.B) {
 	b.StopTimer()
 	nums := AllEqualInt(32)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.TimSort(nums)
+		gosort.TimSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -10092,12 +10092,12 @@ func BenchmarkTimSortAllEqual32(b *testing.B) {
 	}
 }
 
-func BenchmarkTimSortAscending32(b *testing.B) {
+func BenchmarkTimSort1Ascending32(b *testing.B) {
 	b.StopTimer()
 	nums := AscendingInt(32)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.TimSort(nums)
+		gosort.TimSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -10105,12 +10105,12 @@ func BenchmarkTimSortAscending32(b *testing.B) {
 	}
 }
 
-func BenchmarkTimSortDescending32(b *testing.B) {
+func BenchmarkTimSort1Descending32(b *testing.B) {
 	b.StopTimer()
 	nums := DescendingInt(32)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.TimSort(nums)
+		gosort.TimSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -10118,12 +10118,12 @@ func BenchmarkTimSortDescending32(b *testing.B) {
 	}
 }
 
-func BenchmarkTimSortPipeOrgan32(b *testing.B) {
+func BenchmarkTimSort1PipeOrgan32(b *testing.B) {
 	b.StopTimer()
 	nums := PipeOrganInt(32)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.TimSort(nums)
+		gosort.TimSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -10131,12 +10131,12 @@ func BenchmarkTimSortPipeOrgan32(b *testing.B) {
 	}
 }
 
-func BenchmarkTimSortPushFront32(b *testing.B) {
+func BenchmarkTimSort1PushFront32(b *testing.B) {
 	b.StopTimer()
 	nums := PushFrontInt(32)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.TimSort(nums)
+		gosort.TimSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -10144,12 +10144,12 @@ func BenchmarkTimSortPushFront32(b *testing.B) {
 	}
 }
 
-func BenchmarkTimSortPushMiddle32(b *testing.B) {
+func BenchmarkTimSort1PushMiddle32(b *testing.B) {
 	b.StopTimer()
 	nums := PushMiddleInt(32)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.TimSort(nums)
+		gosort.TimSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -10157,12 +10157,12 @@ func BenchmarkTimSortPushMiddle32(b *testing.B) {
 	}
 }
 
-func BenchmarkTimSortRandom128(b *testing.B) {
+func BenchmarkTimSort1Random128(b *testing.B) {
 	b.StopTimer()
 	nums := RandomInt(128)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.TimSort(nums)
+		gosort.TimSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -10170,12 +10170,12 @@ func BenchmarkTimSortRandom128(b *testing.B) {
 	}
 }
 
-func BenchmarkTimSortShuffled128(b *testing.B) {
+func BenchmarkTimSort1Shuffled128(b *testing.B) {
 	b.StopTimer()
 	nums := ShuffledInt(128)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.TimSort(nums)
+		gosort.TimSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -10183,12 +10183,12 @@ func BenchmarkTimSortShuffled128(b *testing.B) {
 	}
 }
 
-func BenchmarkTimSortShuffled16Values128(b *testing.B) {
+func BenchmarkTimSort1Shuffled16Values128(b *testing.B) {
 	b.StopTimer()
 	nums := Shuffled16ValuesInt(128)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.TimSort(nums)
+		gosort.TimSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -10196,12 +10196,12 @@ func BenchmarkTimSortShuffled16Values128(b *testing.B) {
 	}
 }
 
-func BenchmarkTimSortAllEqual128(b *testing.B) {
+func BenchmarkTimSort1AllEqual128(b *testing.B) {
 	b.StopTimer()
 	nums := AllEqualInt(128)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.TimSort(nums)
+		gosort.TimSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -10209,12 +10209,12 @@ func BenchmarkTimSortAllEqual128(b *testing.B) {
 	}
 }
 
-func BenchmarkTimSortAscending128(b *testing.B) {
+func BenchmarkTimSort1Ascending128(b *testing.B) {
 	b.StopTimer()
 	nums := AscendingInt(128)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.TimSort(nums)
+		gosort.TimSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -10222,12 +10222,12 @@ func BenchmarkTimSortAscending128(b *testing.B) {
 	}
 }
 
-func BenchmarkTimSortDescending128(b *testing.B) {
+func BenchmarkTimSort1Descending128(b *testing.B) {
 	b.StopTimer()
 	nums := DescendingInt(128)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.TimSort(nums)
+		gosort.TimSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -10235,12 +10235,12 @@ func BenchmarkTimSortDescending128(b *testing.B) {
 	}
 }
 
-func BenchmarkTimSortPipeOrgan128(b *testing.B) {
+func BenchmarkTimSort1PipeOrgan128(b *testing.B) {
 	b.StopTimer()
 	nums := PipeOrganInt(128)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.TimSort(nums)
+		gosort.TimSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -10248,12 +10248,12 @@ func BenchmarkTimSortPipeOrgan128(b *testing.B) {
 	}
 }
 
-func BenchmarkTimSortPushFront128(b *testing.B) {
+func BenchmarkTimSort1PushFront128(b *testing.B) {
 	b.StopTimer()
 	nums := PushFrontInt(128)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.TimSort(nums)
+		gosort.TimSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -10261,12 +10261,12 @@ func BenchmarkTimSortPushFront128(b *testing.B) {
 	}
 }
 
-func BenchmarkTimSortPushMiddle128(b *testing.B) {
+func BenchmarkTimSort1PushMiddle128(b *testing.B) {
 	b.StopTimer()
 	nums := PushMiddleInt(128)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.TimSort(nums)
+		gosort.TimSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -10274,12 +10274,12 @@ func BenchmarkTimSortPushMiddle128(b *testing.B) {
 	}
 }
 
-func BenchmarkTimSortRandom1024(b *testing.B) {
+func BenchmarkTimSort1Random1024(b *testing.B) {
 	b.StopTimer()
 	nums := RandomInt(1024)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.TimSort(nums)
+		gosort.TimSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -10287,12 +10287,12 @@ func BenchmarkTimSortRandom1024(b *testing.B) {
 	}
 }
 
-func BenchmarkTimSortShuffled1024(b *testing.B) {
+func BenchmarkTimSort1Shuffled1024(b *testing.B) {
 	b.StopTimer()
 	nums := ShuffledInt(1024)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.TimSort(nums)
+		gosort.TimSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -10300,12 +10300,12 @@ func BenchmarkTimSortShuffled1024(b *testing.B) {
 	}
 }
 
-func BenchmarkTimSortShuffled16Values1024(b *testing.B) {
+func BenchmarkTimSort1Shuffled16Values1024(b *testing.B) {
 	b.StopTimer()
 	nums := Shuffled16ValuesInt(1024)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.TimSort(nums)
+		gosort.TimSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -10313,12 +10313,12 @@ func BenchmarkTimSortShuffled16Values1024(b *testing.B) {
 	}
 }
 
-func BenchmarkTimSortAllEqual1024(b *testing.B) {
+func BenchmarkTimSort1AllEqual1024(b *testing.B) {
 	b.StopTimer()
 	nums := AllEqualInt(1024)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.TimSort(nums)
+		gosort.TimSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -10326,12 +10326,12 @@ func BenchmarkTimSortAllEqual1024(b *testing.B) {
 	}
 }
 
-func BenchmarkTimSortAscending1024(b *testing.B) {
+func BenchmarkTimSort1Ascending1024(b *testing.B) {
 	b.StopTimer()
 	nums := AscendingInt(1024)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.TimSort(nums)
+		gosort.TimSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -10339,12 +10339,12 @@ func BenchmarkTimSortAscending1024(b *testing.B) {
 	}
 }
 
-func BenchmarkTimSortDescending1024(b *testing.B) {
+func BenchmarkTimSort1Descending1024(b *testing.B) {
 	b.StopTimer()
 	nums := DescendingInt(1024)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.TimSort(nums)
+		gosort.TimSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -10352,12 +10352,12 @@ func BenchmarkTimSortDescending1024(b *testing.B) {
 	}
 }
 
-func BenchmarkTimSortPipeOrgan1024(b *testing.B) {
+func BenchmarkTimSort1PipeOrgan1024(b *testing.B) {
 	b.StopTimer()
 	nums := PipeOrganInt(1024)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.TimSort(nums)
+		gosort.TimSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -10365,12 +10365,12 @@ func BenchmarkTimSortPipeOrgan1024(b *testing.B) {
 	}
 }
 
-func BenchmarkTimSortPushFront1024(b *testing.B) {
+func BenchmarkTimSort1PushFront1024(b *testing.B) {
 	b.StopTimer()
 	nums := PushFrontInt(1024)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.TimSort(nums)
+		gosort.TimSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -10378,12 +10378,12 @@ func BenchmarkTimSortPushFront1024(b *testing.B) {
 	}
 }
 
-func BenchmarkTimSortPushMiddle1024(b *testing.B) {
+func BenchmarkTimSort1PushMiddle1024(b *testing.B) {
 	b.StopTimer()
 	nums := PushMiddleInt(1024)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.TimSort(nums)
+		gosort.TimSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -10391,12 +10391,12 @@ func BenchmarkTimSortPushMiddle1024(b *testing.B) {
 	}
 }
 
-func BenchmarkTimSortRandom8192(b *testing.B) {
+func BenchmarkTimSort1Random8192(b *testing.B) {
 	b.StopTimer()
 	nums := RandomInt(8192)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.TimSort(nums)
+		gosort.TimSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -10404,12 +10404,12 @@ func BenchmarkTimSortRandom8192(b *testing.B) {
 	}
 }
 
-func BenchmarkTimSortShuffled8192(b *testing.B) {
+func BenchmarkTimSort1Shuffled8192(b *testing.B) {
 	b.StopTimer()
 	nums := ShuffledInt(8192)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.TimSort(nums)
+		gosort.TimSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -10417,12 +10417,12 @@ func BenchmarkTimSortShuffled8192(b *testing.B) {
 	}
 }
 
-func BenchmarkTimSortShuffled16Values8192(b *testing.B) {
+func BenchmarkTimSort1Shuffled16Values8192(b *testing.B) {
 	b.StopTimer()
 	nums := Shuffled16ValuesInt(8192)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.TimSort(nums)
+		gosort.TimSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -10430,12 +10430,12 @@ func BenchmarkTimSortShuffled16Values8192(b *testing.B) {
 	}
 }
 
-func BenchmarkTimSortAllEqual8192(b *testing.B) {
+func BenchmarkTimSort1AllEqual8192(b *testing.B) {
 	b.StopTimer()
 	nums := AllEqualInt(8192)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.TimSort(nums)
+		gosort.TimSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -10443,12 +10443,12 @@ func BenchmarkTimSortAllEqual8192(b *testing.B) {
 	}
 }
 
-func BenchmarkTimSortAscending8192(b *testing.B) {
+func BenchmarkTimSort1Ascending8192(b *testing.B) {
 	b.StopTimer()
 	nums := AscendingInt(8192)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.TimSort(nums)
+		gosort.TimSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -10456,12 +10456,12 @@ func BenchmarkTimSortAscending8192(b *testing.B) {
 	}
 }
 
-func BenchmarkTimSortDescending8192(b *testing.B) {
+func BenchmarkTimSort1Descending8192(b *testing.B) {
 	b.StopTimer()
 	nums := DescendingInt(8192)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.TimSort(nums)
+		gosort.TimSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -10469,12 +10469,12 @@ func BenchmarkTimSortDescending8192(b *testing.B) {
 	}
 }
 
-func BenchmarkTimSortPipeOrgan8192(b *testing.B) {
+func BenchmarkTimSort1PipeOrgan8192(b *testing.B) {
 	b.StopTimer()
 	nums := PipeOrganInt(8192)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.TimSort(nums)
+		gosort.TimSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -10482,12 +10482,12 @@ func BenchmarkTimSortPipeOrgan8192(b *testing.B) {
 	}
 }
 
-func BenchmarkTimSortPushFront8192(b *testing.B) {
+func BenchmarkTimSort1PushFront8192(b *testing.B) {
 	b.StopTimer()
 	nums := PushFrontInt(8192)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.TimSort(nums)
+		gosort.TimSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -10495,12 +10495,12 @@ func BenchmarkTimSortPushFront8192(b *testing.B) {
 	}
 }
 
-func BenchmarkTimSortPushMiddle8192(b *testing.B) {
+func BenchmarkTimSort1PushMiddle8192(b *testing.B) {
 	b.StopTimer()
 	nums := PushMiddleInt(8192)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.TimSort(nums)
+		gosort.TimSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -10508,12 +10508,12 @@ func BenchmarkTimSortPushMiddle8192(b *testing.B) {
 	}
 }
 
-func BenchmarkTimSortRandom65536(b *testing.B) {
+func BenchmarkTimSort1Random65536(b *testing.B) {
 	b.StopTimer()
 	nums := RandomInt(65536)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.TimSort(nums)
+		gosort.TimSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -10521,12 +10521,12 @@ func BenchmarkTimSortRandom65536(b *testing.B) {
 	}
 }
 
-func BenchmarkTimSortShuffled65536(b *testing.B) {
+func BenchmarkTimSort1Shuffled65536(b *testing.B) {
 	b.StopTimer()
 	nums := ShuffledInt(65536)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.TimSort(nums)
+		gosort.TimSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -10534,12 +10534,12 @@ func BenchmarkTimSortShuffled65536(b *testing.B) {
 	}
 }
 
-func BenchmarkTimSortShuffled16Values65536(b *testing.B) {
+func BenchmarkTimSort1Shuffled16Values65536(b *testing.B) {
 	b.StopTimer()
 	nums := Shuffled16ValuesInt(65536)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.TimSort(nums)
+		gosort.TimSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -10547,12 +10547,12 @@ func BenchmarkTimSortShuffled16Values65536(b *testing.B) {
 	}
 }
 
-func BenchmarkTimSortAllEqual65536(b *testing.B) {
+func BenchmarkTimSort1AllEqual65536(b *testing.B) {
 	b.StopTimer()
 	nums := AllEqualInt(65536)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.TimSort(nums)
+		gosort.TimSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -10560,12 +10560,12 @@ func BenchmarkTimSortAllEqual65536(b *testing.B) {
 	}
 }
 
-func BenchmarkTimSortAscending65536(b *testing.B) {
+func BenchmarkTimSort1Ascending65536(b *testing.B) {
 	b.StopTimer()
 	nums := AscendingInt(65536)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.TimSort(nums)
+		gosort.TimSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -10573,12 +10573,12 @@ func BenchmarkTimSortAscending65536(b *testing.B) {
 	}
 }
 
-func BenchmarkTimSortDescending65536(b *testing.B) {
+func BenchmarkTimSort1Descending65536(b *testing.B) {
 	b.StopTimer()
 	nums := DescendingInt(65536)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.TimSort(nums)
+		gosort.TimSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -10586,12 +10586,12 @@ func BenchmarkTimSortDescending65536(b *testing.B) {
 	}
 }
 
-func BenchmarkTimSortPipeOrgan65536(b *testing.B) {
+func BenchmarkTimSort1PipeOrgan65536(b *testing.B) {
 	b.StopTimer()
 	nums := PipeOrganInt(65536)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.TimSort(nums)
+		gosort.TimSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -10599,12 +10599,12 @@ func BenchmarkTimSortPipeOrgan65536(b *testing.B) {
 	}
 }
 
-func BenchmarkTimSortPushFront65536(b *testing.B) {
+func BenchmarkTimSort1PushFront65536(b *testing.B) {
 	b.StopTimer()
 	nums := PushFrontInt(65536)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.TimSort(nums)
+		gosort.TimSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -10612,12 +10612,12 @@ func BenchmarkTimSortPushFront65536(b *testing.B) {
 	}
 }
 
-func BenchmarkTimSortPushMiddle65536(b *testing.B) {
+func BenchmarkTimSort1PushMiddle65536(b *testing.B) {
 	b.StopTimer()
 	nums := PushMiddleInt(65536)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.TimSort(nums)
+		gosort.TimSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -10625,12 +10625,12 @@ func BenchmarkTimSortPushMiddle65536(b *testing.B) {
 	}
 }
 
-func BenchmarkTimSortRandom1048576(b *testing.B) {
+func BenchmarkTimSort1Random1048576(b *testing.B) {
 	b.StopTimer()
 	nums := RandomInt(1048576)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.TimSort(nums)
+		gosort.TimSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -10638,12 +10638,12 @@ func BenchmarkTimSortRandom1048576(b *testing.B) {
 	}
 }
 
-func BenchmarkTimSortShuffled1048576(b *testing.B) {
+func BenchmarkTimSort1Shuffled1048576(b *testing.B) {
 	b.StopTimer()
 	nums := ShuffledInt(1048576)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.TimSort(nums)
+		gosort.TimSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -10651,12 +10651,12 @@ func BenchmarkTimSortShuffled1048576(b *testing.B) {
 	}
 }
 
-func BenchmarkTimSortShuffled16Values1048576(b *testing.B) {
+func BenchmarkTimSort1Shuffled16Values1048576(b *testing.B) {
 	b.StopTimer()
 	nums := Shuffled16ValuesInt(1048576)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.TimSort(nums)
+		gosort.TimSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -10664,12 +10664,12 @@ func BenchmarkTimSortShuffled16Values1048576(b *testing.B) {
 	}
 }
 
-func BenchmarkTimSortAllEqual1048576(b *testing.B) {
+func BenchmarkTimSort1AllEqual1048576(b *testing.B) {
 	b.StopTimer()
 	nums := AllEqualInt(1048576)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.TimSort(nums)
+		gosort.TimSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -10677,12 +10677,12 @@ func BenchmarkTimSortAllEqual1048576(b *testing.B) {
 	}
 }
 
-func BenchmarkTimSortAscending1048576(b *testing.B) {
+func BenchmarkTimSort1Ascending1048576(b *testing.B) {
 	b.StopTimer()
 	nums := AscendingInt(1048576)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.TimSort(nums)
+		gosort.TimSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -10690,12 +10690,12 @@ func BenchmarkTimSortAscending1048576(b *testing.B) {
 	}
 }
 
-func BenchmarkTimSortDescending1048576(b *testing.B) {
+func BenchmarkTimSort1Descending1048576(b *testing.B) {
 	b.StopTimer()
 	nums := DescendingInt(1048576)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.TimSort(nums)
+		gosort.TimSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -10703,12 +10703,12 @@ func BenchmarkTimSortDescending1048576(b *testing.B) {
 	}
 }
 
-func BenchmarkTimSortPipeOrgan1048576(b *testing.B) {
+func BenchmarkTimSort1PipeOrgan1048576(b *testing.B) {
 	b.StopTimer()
 	nums := PipeOrganInt(1048576)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.TimSort(nums)
+		gosort.TimSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -10716,12 +10716,12 @@ func BenchmarkTimSortPipeOrgan1048576(b *testing.B) {
 	}
 }
 
-func BenchmarkTimSortPushFront1048576(b *testing.B) {
+func BenchmarkTimSort1PushFront1048576(b *testing.B) {
 	b.StopTimer()
 	nums := PushFrontInt(1048576)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.TimSort(nums)
+		gosort.TimSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -10729,12 +10729,12 @@ func BenchmarkTimSortPushFront1048576(b *testing.B) {
 	}
 }
 
-func BenchmarkTimSortPushMiddle1048576(b *testing.B) {
+func BenchmarkTimSort1PushMiddle1048576(b *testing.B) {
 	b.StopTimer()
 	nums := PushMiddleInt(1048576)
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		gosort.TimSort(nums)
+		gosort.TimSort1(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
@@ -13192,6 +13192,825 @@ func BenchmarkBitonicSortPushMiddle1048576(b *testing.B) {
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
 		gosort.BitonicSort(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkTimSort2Random8(b *testing.B) {
+	b.StopTimer()
+	nums := RandomInt(8)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.TimSort2(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkTimSort2Shuffled8(b *testing.B) {
+	b.StopTimer()
+	nums := ShuffledInt(8)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.TimSort2(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkTimSort2Shuffled16Values8(b *testing.B) {
+	b.StopTimer()
+	nums := Shuffled16ValuesInt(8)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.TimSort2(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkTimSort2AllEqual8(b *testing.B) {
+	b.StopTimer()
+	nums := AllEqualInt(8)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.TimSort2(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkTimSort2Ascending8(b *testing.B) {
+	b.StopTimer()
+	nums := AscendingInt(8)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.TimSort2(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkTimSort2Descending8(b *testing.B) {
+	b.StopTimer()
+	nums := DescendingInt(8)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.TimSort2(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkTimSort2PipeOrgan8(b *testing.B) {
+	b.StopTimer()
+	nums := PipeOrganInt(8)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.TimSort2(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkTimSort2PushFront8(b *testing.B) {
+	b.StopTimer()
+	nums := PushFrontInt(8)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.TimSort2(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkTimSort2PushMiddle8(b *testing.B) {
+	b.StopTimer()
+	nums := PushMiddleInt(8)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.TimSort2(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkTimSort2Random32(b *testing.B) {
+	b.StopTimer()
+	nums := RandomInt(32)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.TimSort2(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkTimSort2Shuffled32(b *testing.B) {
+	b.StopTimer()
+	nums := ShuffledInt(32)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.TimSort2(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkTimSort2Shuffled16Values32(b *testing.B) {
+	b.StopTimer()
+	nums := Shuffled16ValuesInt(32)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.TimSort2(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkTimSort2AllEqual32(b *testing.B) {
+	b.StopTimer()
+	nums := AllEqualInt(32)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.TimSort2(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkTimSort2Ascending32(b *testing.B) {
+	b.StopTimer()
+	nums := AscendingInt(32)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.TimSort2(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkTimSort2Descending32(b *testing.B) {
+	b.StopTimer()
+	nums := DescendingInt(32)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.TimSort2(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkTimSort2PipeOrgan32(b *testing.B) {
+	b.StopTimer()
+	nums := PipeOrganInt(32)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.TimSort2(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkTimSort2PushFront32(b *testing.B) {
+	b.StopTimer()
+	nums := PushFrontInt(32)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.TimSort2(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkTimSort2PushMiddle32(b *testing.B) {
+	b.StopTimer()
+	nums := PushMiddleInt(32)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.TimSort2(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkTimSort2Random128(b *testing.B) {
+	b.StopTimer()
+	nums := RandomInt(128)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.TimSort2(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkTimSort2Shuffled128(b *testing.B) {
+	b.StopTimer()
+	nums := ShuffledInt(128)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.TimSort2(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkTimSort2Shuffled16Values128(b *testing.B) {
+	b.StopTimer()
+	nums := Shuffled16ValuesInt(128)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.TimSort2(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkTimSort2AllEqual128(b *testing.B) {
+	b.StopTimer()
+	nums := AllEqualInt(128)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.TimSort2(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkTimSort2Ascending128(b *testing.B) {
+	b.StopTimer()
+	nums := AscendingInt(128)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.TimSort2(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkTimSort2Descending128(b *testing.B) {
+	b.StopTimer()
+	nums := DescendingInt(128)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.TimSort2(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkTimSort2PipeOrgan128(b *testing.B) {
+	b.StopTimer()
+	nums := PipeOrganInt(128)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.TimSort2(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkTimSort2PushFront128(b *testing.B) {
+	b.StopTimer()
+	nums := PushFrontInt(128)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.TimSort2(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkTimSort2PushMiddle128(b *testing.B) {
+	b.StopTimer()
+	nums := PushMiddleInt(128)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.TimSort2(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkTimSort2Random1024(b *testing.B) {
+	b.StopTimer()
+	nums := RandomInt(1024)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.TimSort2(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkTimSort2Shuffled1024(b *testing.B) {
+	b.StopTimer()
+	nums := ShuffledInt(1024)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.TimSort2(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkTimSort2Shuffled16Values1024(b *testing.B) {
+	b.StopTimer()
+	nums := Shuffled16ValuesInt(1024)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.TimSort2(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkTimSort2AllEqual1024(b *testing.B) {
+	b.StopTimer()
+	nums := AllEqualInt(1024)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.TimSort2(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkTimSort2Ascending1024(b *testing.B) {
+	b.StopTimer()
+	nums := AscendingInt(1024)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.TimSort2(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkTimSort2Descending1024(b *testing.B) {
+	b.StopTimer()
+	nums := DescendingInt(1024)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.TimSort2(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkTimSort2PipeOrgan1024(b *testing.B) {
+	b.StopTimer()
+	nums := PipeOrganInt(1024)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.TimSort2(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkTimSort2PushFront1024(b *testing.B) {
+	b.StopTimer()
+	nums := PushFrontInt(1024)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.TimSort2(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkTimSort2PushMiddle1024(b *testing.B) {
+	b.StopTimer()
+	nums := PushMiddleInt(1024)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.TimSort2(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkTimSort2Random8192(b *testing.B) {
+	b.StopTimer()
+	nums := RandomInt(8192)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.TimSort2(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkTimSort2Shuffled8192(b *testing.B) {
+	b.StopTimer()
+	nums := ShuffledInt(8192)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.TimSort2(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkTimSort2Shuffled16Values8192(b *testing.B) {
+	b.StopTimer()
+	nums := Shuffled16ValuesInt(8192)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.TimSort2(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkTimSort2AllEqual8192(b *testing.B) {
+	b.StopTimer()
+	nums := AllEqualInt(8192)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.TimSort2(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkTimSort2Ascending8192(b *testing.B) {
+	b.StopTimer()
+	nums := AscendingInt(8192)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.TimSort2(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkTimSort2Descending8192(b *testing.B) {
+	b.StopTimer()
+	nums := DescendingInt(8192)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.TimSort2(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkTimSort2PipeOrgan8192(b *testing.B) {
+	b.StopTimer()
+	nums := PipeOrganInt(8192)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.TimSort2(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkTimSort2PushFront8192(b *testing.B) {
+	b.StopTimer()
+	nums := PushFrontInt(8192)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.TimSort2(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkTimSort2PushMiddle8192(b *testing.B) {
+	b.StopTimer()
+	nums := PushMiddleInt(8192)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.TimSort2(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkTimSort2Random65536(b *testing.B) {
+	b.StopTimer()
+	nums := RandomInt(65536)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.TimSort2(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkTimSort2Shuffled65536(b *testing.B) {
+	b.StopTimer()
+	nums := ShuffledInt(65536)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.TimSort2(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkTimSort2Shuffled16Values65536(b *testing.B) {
+	b.StopTimer()
+	nums := Shuffled16ValuesInt(65536)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.TimSort2(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkTimSort2AllEqual65536(b *testing.B) {
+	b.StopTimer()
+	nums := AllEqualInt(65536)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.TimSort2(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkTimSort2Ascending65536(b *testing.B) {
+	b.StopTimer()
+	nums := AscendingInt(65536)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.TimSort2(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkTimSort2Descending65536(b *testing.B) {
+	b.StopTimer()
+	nums := DescendingInt(65536)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.TimSort2(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkTimSort2PipeOrgan65536(b *testing.B) {
+	b.StopTimer()
+	nums := PipeOrganInt(65536)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.TimSort2(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkTimSort2PushFront65536(b *testing.B) {
+	b.StopTimer()
+	nums := PushFrontInt(65536)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.TimSort2(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkTimSort2PushMiddle65536(b *testing.B) {
+	b.StopTimer()
+	nums := PushMiddleInt(65536)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.TimSort2(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkTimSort2Random1048576(b *testing.B) {
+	b.StopTimer()
+	nums := RandomInt(1048576)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.TimSort2(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkTimSort2Shuffled1048576(b *testing.B) {
+	b.StopTimer()
+	nums := ShuffledInt(1048576)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.TimSort2(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkTimSort2Shuffled16Values1048576(b *testing.B) {
+	b.StopTimer()
+	nums := Shuffled16ValuesInt(1048576)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.TimSort2(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkTimSort2AllEqual1048576(b *testing.B) {
+	b.StopTimer()
+	nums := AllEqualInt(1048576)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.TimSort2(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkTimSort2Ascending1048576(b *testing.B) {
+	b.StopTimer()
+	nums := AscendingInt(1048576)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.TimSort2(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkTimSort2Descending1048576(b *testing.B) {
+	b.StopTimer()
+	nums := DescendingInt(1048576)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.TimSort2(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkTimSort2PipeOrgan1048576(b *testing.B) {
+	b.StopTimer()
+	nums := PipeOrganInt(1048576)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.TimSort2(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkTimSort2PushFront1048576(b *testing.B) {
+	b.StopTimer()
+	nums := PushFrontInt(1048576)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.TimSort2(nums)
+	}
+	b.StopTimer()
+	if !sort.IntsAreSorted(nums) {
+		b.Fatalf("fail!")
+	}
+}
+
+func BenchmarkTimSort2PushMiddle1048576(b *testing.B) {
+	b.StopTimer()
+	nums := PushMiddleInt(1048576)
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		gosort.TimSort2(nums)
 	}
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {

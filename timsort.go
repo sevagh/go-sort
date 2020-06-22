@@ -1,31 +1,58 @@
 package gosort
 
-// TimSort is a simplistic implementation of timsort with no galloping
-//
-// sources:
-// https://github.com/python/cpython/blob/master/Objects/listobject.c
-// https://medium.com/@rylanbauermeister/understanding-timsort-191c758a42f3
-// https://wiki.c2.com/?TimSort
-func TimSort(nums []int) {
+// TimSort2 is an optimized version of TimSort1
+func TimSort2(nums []int) {
 	n := len(nums)
-	currOffset := 0
+	lo := 0
+	prev := 0
+	iter := 0
 
 	mergeBoundaries := [][2]int{}
 
-	for currOffset < n {
-		minrun := minRun(n - currOffset)
-		currRun := countRun(nums, currOffset)
-		sliceRightLim := currOffset + currRun
+	minrun := minRun(n - lo)
+	currRun := countRun(nums, lo)
+	hi := lo + currRun
+
+	if currRun < minrun {
+		// run is not big enough, insertion sort it
+		hi = lo + minrun
+		insertionSort(nums, lo, hi)
+	}
+
+	prev = lo
+	lo = hi
+
+	for lo < n {
+		minrun = minRun(n - lo)
+		currRun = countRun(nums, lo)
+		hi = lo + currRun
 
 		if currRun < minrun {
 			// run is not big enough, insertion sort it
-			sliceRightLim = currOffset + minrun
-			insertionSort(nums, currOffset, sliceRightLim)
+			hi = lo + minrun
+			insertionSort(nums, lo, hi)
 		}
 
-		mergeBoundaries = append(mergeBoundaries, [2]int{currOffset, sliceRightLim})
-		currOffset = sliceRightLim
+		if iter%2 == 0 {
+			symMerge(nums, prev, lo, hi)
+			mergeBoundaries = append(mergeBoundaries, [2]int{prev, hi})
+		}
+
+		prev = lo
+		lo = hi
+		iter++
 	}
+	symMerge(nums, prev, lo, hi)
+
+	if len(mergeBoundaries) == 0 {
+		return
+	}
+
+	last := mergeBoundaries[len(mergeBoundaries)-1][1]
+	if last != n {
+		mergeBoundaries = append(mergeBoundaries, [2]int{last, n})
+	}
+
 	mergeOnBoundaries(nums, &mergeBoundaries)
 }
 
@@ -139,7 +166,6 @@ func mergeOnBoundaries(nums []int, mergeBoundaries *[][2]int) {
 
 	for len(*mergeBoundaries) > 1 {
 		for i := 0; i < len(*mergeBoundaries); i += 2 {
-			//fmt.Printf("len(mb): %d, i: %d, i+1: %d\n", len(*mergeBoundaries), i, i+1)
 			currentMerge, nextMerge = (*mergeBoundaries)[i], (*mergeBoundaries)[i+1]
 			symMerge(nums, currentMerge[0], nextMerge[0], nextMerge[1])
 			(*mergeBoundaries)[i/2] = [2]int{currentMerge[0], nextMerge[1]}
@@ -147,4 +173,33 @@ func mergeOnBoundaries(nums []int, mergeBoundaries *[][2]int) {
 		(*mergeBoundaries) = (*mergeBoundaries)[:len(*mergeBoundaries)/2]
 		reduceOddMergeBoundaries(nums, mergeBoundaries)
 	}
+}
+
+// TimSort1 is a simplistic implementation of timsort with no galloping
+//
+// sources:
+// https://github.com/python/cpython/blob/master/Objects/listobject.c
+// https://medium.com/@rylanbauermeister/understanding-timsort-191c758a42f3
+// https://wiki.c2.com/?TimSort
+func TimSort1(nums []int) {
+	n := len(nums)
+	currOffset := 0
+
+	mergeBoundaries := [][2]int{}
+
+	for currOffset < n {
+		minrun := minRun(n - currOffset)
+		currRun := countRun(nums, currOffset)
+		sliceRightLim := currOffset + currRun
+
+		if currRun < minrun {
+			// run is not big enough, insertion sort it
+			sliceRightLim = currOffset + minrun
+			insertionSort(nums, currOffset, sliceRightLim)
+		}
+
+		mergeBoundaries = append(mergeBoundaries, [2]int{currOffset, sliceRightLim})
+		currOffset = sliceRightLim
+	}
+	mergeOnBoundaries(nums, &mergeBoundaries)
 }
