@@ -1,10 +1,8 @@
 Collection of Go sorting algorithms and experiments.
 
-Plots are log-log on both axes. My crude TimSort implementation does surprisingly well.
+Plots are log-log on both axes. My first crude **TimSort1** implementation does surprisingly well - the refined **TimSort2** is better still.
 
-<img src="./.github/ns.png" width=512px>
-<img src="./.github/bytes.png" width=512px>
-<img src="./.github/allocs.png" width=512px>
+![ns](.github/ns.png)
 
 ## Notes
 

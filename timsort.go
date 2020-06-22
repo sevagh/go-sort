@@ -175,7 +175,7 @@ func mergeOnBoundaries(nums []int, mergeBoundaries *[][2]int) {
 	}
 }
 
-// TimSort is a simplistic implementation of timsort with no galloping
+// TimSort1 is a simplistic implementation of timsort with no galloping
 //
 // sources:
 // https://github.com/python/cpython/blob/master/Objects/listobject.c
