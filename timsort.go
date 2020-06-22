@@ -1,13 +1,6 @@
 package gosort
 
-//import "fmt"
-
-// TimSort is a simplistic implementation of timsort with no galloping
-//
-// sources:
-// https://github.com/python/cpython/blob/master/Objects/listobject.c
-// https://medium.com/@rylanbauermeister/understanding-timsort-191c758a42f3
-// https://wiki.c2.com/?TimSort
+// TimSort2 is an optimized version of TimSort1
 func TimSort2(nums []int) {
 	n := len(nums)
 	lo := 0
@@ -41,7 +34,6 @@ func TimSort2(nums []int) {
 		}
 
 		if iter%2 == 0 {
-			//fmt.Printf("merge: %d %d %d\n", prev, lo, hi)
 			symMerge(nums, prev, lo, hi)
 			mergeBoundaries = append(mergeBoundaries, [2]int{prev, hi})
 		}
@@ -51,6 +43,15 @@ func TimSort2(nums []int) {
 		iter++
 	}
 	symMerge(nums, prev, lo, hi)
+
+	if len(mergeBoundaries) == 0 {
+		return
+	}
+
+	last := mergeBoundaries[len(mergeBoundaries)-1][1]
+	if last != n {
+		mergeBoundaries = append(mergeBoundaries, [2]int{last, n})
+	}
 
 	mergeOnBoundaries(nums, &mergeBoundaries)
 }
@@ -174,6 +175,12 @@ func mergeOnBoundaries(nums []int, mergeBoundaries *[][2]int) {
 	}
 }
 
+// TimSort is a simplistic implementation of timsort with no galloping
+//
+// sources:
+// https://github.com/python/cpython/blob/master/Objects/listobject.c
+// https://medium.com/@rylanbauermeister/understanding-timsort-191c758a42f3
+// https://wiki.c2.com/?TimSort
 func TimSort1(nums []int) {
 	n := len(nums)
 	currOffset := 0
