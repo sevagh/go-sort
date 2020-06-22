@@ -8,7 +8,7 @@ package gosort
 // https://github.com/python/cpython/blob/master/Objects/listobject.c
 // https://medium.com/@rylanbauermeister/understanding-timsort-191c758a42f3
 // https://wiki.c2.com/?TimSort
-func TimSort(nums []int) {
+func TimSort2(nums []int) {
 	n := len(nums)
 	lo := 0
 	prev := 0
@@ -172,4 +172,27 @@ func mergeOnBoundaries(nums []int, mergeBoundaries *[][2]int) {
 		(*mergeBoundaries) = (*mergeBoundaries)[:len(*mergeBoundaries)/2]
 		reduceOddMergeBoundaries(nums, mergeBoundaries)
 	}
+}
+
+func TimSort1(nums []int) {
+	n := len(nums)
+	currOffset := 0
+
+	mergeBoundaries := [][2]int{}
+
+	for currOffset < n {
+		minrun := minRun(n - currOffset)
+		currRun := countRun(nums, currOffset)
+		sliceRightLim := currOffset + currRun
+
+		if currRun < minrun {
+			// run is not big enough, insertion sort it
+			sliceRightLim = currOffset + minrun
+			insertionSort(nums, currOffset, sliceRightLim)
+		}
+
+		mergeBoundaries = append(mergeBoundaries, [2]int{currOffset, sliceRightLim})
+		currOffset = sliceRightLim
+	}
+	mergeOnBoundaries(nums, &mergeBoundaries)
 }

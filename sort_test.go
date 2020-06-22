@@ -134,8 +134,12 @@ func TestMergeGTIterativeBentleyMcIlroy(t *testing.T) {
 	testBentleyMcIlroy(t, gosort.MergeSort3)
 }
 
-func TestMergeTimBentleyMcIlroy(t *testing.T) {
-	testBentleyMcIlroy(t, gosort.TimSort)
+func TestTimSort1BentleyMcIlroy(t *testing.T) {
+	testBentleyMcIlroy(t, gosort.TimSort1)
+}
+
+func TestTimSort2BentleyMcIlroy(t *testing.T) {
+	testBentleyMcIlroy(t, gosort.TimSort2)
 }
 
 func TestRadixSortBentleyMcIlroy(t *testing.T) {
