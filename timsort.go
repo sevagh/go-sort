@@ -3,15 +3,36 @@ package gosort
 import "fmt"
 
 // TimSort is a simplistic implementation of timsort with no galloping
+//
+// sources:
+// https://github.com/python/cpython/blob/master/Objects/listobject.c
+// https://medium.com/@rylanbauermeister/understanding-timsort-191c758a42f3
+// https://wiki.c2.com/?TimSort
 func TimSort(nums []int) {
 	n := len(nums)
 	lo := 0
 	prev := 0
+	iter := 0
+
+	bigMerges := []int{}
+
+	minrun := minRun(n - lo)
+	currRun := countRun(nums, lo)
+	hi := lo + currRun
+
+	if currRun < minrun {
+		// run is not big enough, insertion sort it
+		hi = lo + minrun
+		insertionSort(nums, lo, hi)
+	}
+
+	prev = lo
+	lo = hi
 
 	for lo < n {
-		minrun := minRun(n - lo)
-		currRun := countRun(nums, lo)
-		hi := lo + currRun
+		minrun = minRun(n - lo)
+		currRun = countRun(nums, lo)
+		hi = lo + currRun
 
 		if currRun < minrun {
 			// run is not big enough, insertion sort it
@@ -19,10 +40,21 @@ func TimSort(nums []int) {
 			insertionSort(nums, lo, hi)
 		}
 
+		if iter%2 == 0 {
+			fmt.Printf("merge: %d %d %d\n", prev, lo, hi)
+			symMerge(nums, prev, lo, hi)
+			bigMerges = append(bigMerges, hi)
+		}
+
 		prev = lo
-		symMerge(nums, 0, prev, hi)
 		lo = hi
+		iter++
 	}
+	symMerge(nums, prev, lo, hi)
+
+	fmt.Printf("big merges: %+v\n", bigMerges)
+	//mergeOnBoundaries(nums, &mergeBoundaries)
+	//mergeSort(nums, 0, len(nums)-1)
 }
 
 func minRun(n int) int {
@@ -83,43 +115,4 @@ func countRun(nums []int, a int) int {
 	}
 
 	return ascRun
-}
-
-var currentMerge [2]int
-var nextMerge [2]int
-
-func reduceOddMergeBoundaries(nums []int, mergeBoundaries *[][2]int) {
-	lenMB := len(*mergeBoundaries)
-
-	if lenMB <= 1 {
-		return
-	}
-
-	// odd merge boundaries, eliminate the middle
-	if lenMB%2 == 1 {
-		mid := lenMB / 2
-		symMerge(nums, (*mergeBoundaries)[mid][0], (*mergeBoundaries)[mid][1], (*mergeBoundaries)[mid+1][1])
-		toAdd := [2]int{(*mergeBoundaries)[mid][0], (*mergeBoundaries)[mid+1][1]}
-		*mergeBoundaries = append((*mergeBoundaries)[:mid], (*mergeBoundaries)[mid+1:]...)
-		(*mergeBoundaries)[mid] = toAdd
-	}
-}
-
-func mergeOnBoundaries(nums []int, mergeBoundaries *[][2]int) {
-	// here, we have to repeatedly merge on the boundaries
-	// merge duples from the beginning and end
-
-	reduceOddMergeBoundaries(nums, mergeBoundaries)
-
-	for len(*mergeBoundaries) > 1 {
-		for i := 0; i < len(*mergeBoundaries); i += 2 {
-			//fmt.Printf("len(mb): %d, i: %d, i+1: %d\n", len(*mergeBoundaries), i, i+1)
-			currentMerge, nextMerge = (*mergeBoundaries)[i], (*mergeBoundaries)[i+1]
-			fmt.Printf("mergeOnBoundaries doing %d %d %d\n", currentMerge[0], nextMerge[0], nextMerge[1])
-			symMerge(nums, currentMerge[0], nextMerge[0], nextMerge[1])
-			(*mergeBoundaries)[i/2] = [2]int{currentMerge[0], nextMerge[1]}
-		}
-		(*mergeBoundaries) = (*mergeBoundaries)[:len(*mergeBoundaries)/2]
-		reduceOddMergeBoundaries(nums, mergeBoundaries)
-	}
 }

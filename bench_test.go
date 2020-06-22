@@ -9933,6 +9933,8 @@ func BenchmarkTimSortRandom8(b *testing.B) {
 	b.StopTimer()
 	if !sort.IntsAreSorted(nums) {
 		b.Fatalf("fail!")
+	} else {
+		b.Logf("success!")
 	}
 }
 
